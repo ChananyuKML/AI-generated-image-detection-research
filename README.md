@@ -82,6 +82,9 @@ Copy the entire run folder when moving a resumable experiment to another PC.
 
 ## Project layout
 
+[`AGENTS.md`](AGENTS.md) contains repository guidance for Codex on another PC,
+including the research conventions, setup commands, validation, and data handling.
+
 ```text
 aig/                    supported training/evaluation/data-loading workflow
 networks/               model implementations, including learned_filters.py
