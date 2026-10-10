@@ -118,6 +118,9 @@ Temporary test checkpoints are removed afterward; this does not train a benchmar
 [SETUP](docs/SETUP.md) · [DATASETS](docs/DATASETS.md) · [METHOD](docs/METHOD.md) ·
 [EXPERIMENTS](docs/EXPERIMENTS.md) · [GITHUB](docs/GITHUB.md) · [MIGRATION](docs/MIGRATION.md)
 
+The completed checks and machine-specific limits are recorded in
+[VALIDATION](docs/VALIDATION.md).
+
 Datasets, environments, model weights, private notes, and outputs are excluded from
 Git. No code license has been assigned by this preparation; choose one as the
 research owner before a public release. Dataset licenses are independent of the code.
