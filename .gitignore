@@ -1,0 +1,39 @@
+# Environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Images, derived manifests, and results stay local.
+dataset/*
+!dataset/README.md
+checkpoints/
+runs/
+output/
+graph/
+tmp/
+local_archive/
+*.pth
+*.pt
+*.onnx
+*.zip
+*.part
+
+# Machine settings and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

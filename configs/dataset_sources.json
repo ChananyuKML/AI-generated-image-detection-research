@@ -1,0 +1,35 @@
+{
+  "cifake": {
+    "publication": "CIFAKE: Image Classification and Explainable Identification of AI-Generated Synthetic Images, IEEE Access, 2024",
+    "paper": "https://arxiv.org/abs/2303.14126",
+    "author_repository": "https://github.com/jordan-bird/CIFAKE-Real-and-AI-Generated-Synthetic-Images",
+    "dataset": "https://www.kaggle.com/datasets/birdy654/cifake-real-and-ai-generated-synthetic-images",
+    "provider_license": "MIT",
+    "native_resolution": "32x32",
+    "real_source": "CIFAR-10",
+    "fake_source": "Stable Diffusion 1.4",
+    "protocol": "Original test split remains held out after exact duplicate cleaning; validation is derived from original training images. POC is a smaller balanced subset."
+  },
+  "progan": {
+    "publication": "CNN-generated images are surprisingly easy to spot... for now, CVPR, 2020",
+    "paper": "https://arxiv.org/abs/1912.11035",
+    "author_repository": "https://github.com/peterwang512/CNNDetection",
+    "dataset": "https://huggingface.co/datasets/sywang/CNNDetection",
+    "provider_license": "CC-BY-NC-SA-4.0 (release metadata)",
+    "archive": "progan_val.zip",
+    "native_resolution": "256x256",
+    "real_source": "LSUN",
+    "fake_source": "ProGAN",
+    "protocol": "A custom stratified 70/15/15 pilot split from the released validation archive. This is not the original benchmark training protocol. The current downloaded release contains 8000 image entries; the paper describes 4000 validation images."
+  },
+  "tiny_genimage": {
+    "publication": "Derived from GenImage: A Million-Scale Benchmark for Detecting AI-Generated Image, NeurIPS Datasets and Benchmarks, 2023",
+    "paper": "https://arxiv.org/abs/2306.08571",
+    "author_repository": "https://github.com/GenImage-Dataset/GenImage",
+    "community_subset": "https://www.kaggle.com/datasets/yangsangtai/tiny-genimage",
+    "provider_license": "CC-BY-NC-SA-4.0 (subset metadata)",
+    "real_source": "ImageNet",
+    "fake_sources": ["ADM", "BigGAN", "GLIDE", "Midjourney", "Stable Diffusion 1.5", "VQDM", "Wukong"],
+    "protocol": "Original training groups retained, supplied validation groups split into validation/test, and decoded-pixel duplicates grouped globally. All released prepared variants are balanced. This community subset excludes SD1.4 and is not the complete official GenImage protocol."
+  }
+}

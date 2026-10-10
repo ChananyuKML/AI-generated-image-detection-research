@@ -1,0 +1,87 @@
+# Upload the prepared code to ChananyuKML
+
+Suggested repository: **ChananyuKML/aig-dec**. This preparation does not create or
+publish a remote repository. The upload helper previews its actions unless passed
+`--push`.
+
+## Create the empty GitHub repository
+
+Sign into the intended `ChananyuKML` account and open
+[GitHub's new repository page](https://github.com/new). Set the repository name to
+`aig-dec` (or another chosen name). Choose private or public as appropriate for the
+research. Leave GitHub's README, .gitignore, and license initialization unchecked;
+the prepared local project supplies the first commit.
+
+For a private repository, the other PC must also authenticate with an account
+that can access it. Git for Windows can use its normal browser authentication.
+Do not put access tokens in repository URLs, scripts, or documentation.
+
+## Review the local source snapshot
+
+Open a terminal in `aig_dec`:
+
+```sh
+git status --short
+git ls-files
+git log -1 --oneline
+python scripts/publish_github.py --repository aig-dec
+```
+
+Only source, tests, small configuration, and documentation should be tracked.
+The helper checks for tracked image datasets, environments, checkpoints, local
+archives, credentials files, and large files, then previews the destination/commands.
+
+If using a source-only ZIP export, initialize and commit it first:
+
+```sh
+git init -b main
+git add .
+git diff --cached --stat
+git commit -m "Prepare portable binary detection workflow"
+```
+
+If Git needs an identity, configure your own name/email before committing.
+
+## Push after the empty repository exists
+
+```sh
+python scripts/publish_github.py --repository aig-dec --push
+```
+
+This adds `origin` when absent and runs `git push -u origin main`. It never replaces
+an origin pointing at another destination and never force-pushes. If the remote
+already contains commits, fetch and review them before integrating histories.
+
+Without the helper, the equivalent commands are:
+
+```sh
+git remote add origin https://github.com/ChananyuKML/aig-dec.git
+git push -u origin main
+```
+
+## Clone, update, and train on another PC
+
+```sh
+git clone https://github.com/ChananyuKML/aig-dec.git
+cd aig-dec
+python scripts/run.py pipeline --dataset progan_poc --compute cu128 --epochs 20
+```
+
+For later updates, commit any local source edits before pulling, then run:
+
+```sh
+git pull --ff-only
+python scripts/run.py setup --compute cu128
+python scripts/run.py train --dataset progan_poc --device cuda --check-only
+```
+
+Existing data remains on that PC. Set up CPU instead if the destination has no
+supported NVIDIA GPU. Use `python3` on Linux when needed. See [SETUP.md](SETUP.md)
+and [DATASETS.md](DATASETS.md) for machine setup and transferring datasets.
+
+## What stays outside Git
+
+`.venv/`, downloaded/prepared datasets, derived image indices/manifests,
+`runs/`, `checkpoints/`, `output/`, `tmp/`, and `local_archive/` are ignored.
+Store model/results backups separately. No code license was inferred from the
+research files; add the license you choose before a public release.
