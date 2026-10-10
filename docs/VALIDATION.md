@@ -28,7 +28,7 @@ torchvision 0.24.1+cu128, and an NVIDIA GeForce RTX 5060 Ti.
   source and loaded the trainer; its setup commands targeted its own `.venv`.
 - Tracked Python files passed AST parsing; source JSON and workflow YAML parsed;
   the new workflow/docs passed Git whitespace checks.
-- The upload helper previewed `ChananyuKML/aig-dec` without changing a remote
+- The upload helper previewed the configured GitHub destination without changing a remote
   or pushing. Git tracking and the source ZIP excluded datasets, environments,
   weights, results, temporary files, and local research archives.
 

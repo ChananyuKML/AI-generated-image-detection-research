@@ -17,7 +17,7 @@ def git(*arguments):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--repository", default="aig-dec", help="Name of an existing empty GitHub repository")
+    parser.add_argument("--repository", default="AI-generated-image-detection-research", help="Name of an existing empty GitHub repository")
     parser.add_argument("--push", action="store_true", help="Actually set the remote and push main; default only previews")
     args = parser.parse_args()
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", args.repository) or args.repository in (".", ".."):

@@ -1,4 +1,4 @@
-# AIG-DEC: gradient-based AI-generated image detection
+# AI-generated image detection research
 
 Binary research code for real (`nature = 0`) versus AI-generated (`ai = 1`) images.
 The current experiment learns two 3x3 filters, initialized from the existing FFD
@@ -15,13 +15,12 @@ batch size 32, input size 224, and seed 42. These are pilot defaults.
 Install Git and Python **3.11–3.13** first. For NVIDIA training, install a compatible
 NVIDIA driver. Python 3.13 + PyTorch 2.9.1 CUDA 12.8 was tested on the original PC.
 
-The proposed GitHub repository name is `ChananyuKML/aig-dec`; create/upload it using
-[docs/GITHUB.md](docs/GITHUB.md) before using this clone command. Substitute the
-chosen repository name if different.
+The GitHub repository name is `ChananyuKML/AI-generated-image-detection-research`;
+create/upload it using [docs/GITHUB.md](docs/GITHUB.md) before using this clone command.
 
 ```sh
-git clone https://github.com/ChananyuKML/aig-dec.git
-cd aig-dec
+git clone https://github.com/ChananyuKML/AI-generated-image-detection-research.git
+cd AI-generated-image-detection-research
 python scripts/run.py pipeline --dataset progan_poc --compute cu128 --epochs 20
 ```
 
