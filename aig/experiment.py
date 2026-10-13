@@ -15,6 +15,7 @@ from networks.hog_cnn import DualCNN_128
 from networks.learned_filters import LearnableFilterCNN128
 from networks.kcnet import FixedFilterKCNet
 from utils.custom_transforms import gray_center_224, raw_grad_224
+from .io import atomic_write_json
 
 ROOT = Path(__file__).resolve().parents[1]
 KC_MODELS = ("fixed_filter_kcnet", "finetuned_cnn_kcnet")
@@ -151,11 +152,7 @@ def training_data_signature(root, datasets):
 
 
 def write_json(path, value):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(path.suffix + ".part")
-    temporary.write_text(json.dumps(value, indent=2, allow_nan=False) + "\n", encoding="utf-8")
-    temporary.replace(path)
+    atomic_write_json(path, value)
 
 
 def atomic_save(value, path):

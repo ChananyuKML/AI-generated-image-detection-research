@@ -56,12 +56,12 @@ el('status').textContent=data.status==='running'?(data.child_alive?'Running':'Be
 el('scope').textContent='Full datasets: '+(data.settings.datasets||[]).join(', ')+' · seeds '+data.settings.seeds.join(', ')+' · maximum '+data.settings.epochs+' epochs · patience '+data.settings.patience;
 el('active').textContent=active?active.dataset+' · '+(friendly[active.model]||active.model):data.status==='completed'?'All full-dataset runs completed':'Preparing the training queue';
 el('phase').textContent=active&&active.status==='evaluating'?'Evaluating best validation checkpoint on held-out test':(p.phase||data.status).replaceAll('_',' ');
-el('process').textContent=active&&data.child_alive?'Python PID '+active.pid+' · active':'Manager PID '+data.manager_pid;
+el('process').textContent=active&&data.child_alive?'Python PID '+(data.process_pid||active.pid)+' · active':'Manager PID '+data.manager_pid;
 el('epoch').textContent=p.epoch!==undefined?p.epoch+' / '+data.settings.epochs:'— / '+data.settings.epochs;
 el('loss').textContent=fixed(p.current_loss);el('accuracy').textContent=percent(p.current_accuracy);el('completed').textContent=done+' / '+jobs.length;
 el('batch-progress').max=p.batches||1;el('batch-progress').value=p.batch||0;
 el('batches').textContent=p.batches?'Batch '+p.batch+' / '+p.batches+' · '+(p.samples||0).toLocaleString()+' images':'Initializing dataset / model';
-el('eta').textContent=p.phase_eta_seconds!==undefined?'Phase remaining ≈ '+duration(p.phase_eta_seconds)+(valid(p.samples_per_second)?' · '+fixed(p.samples_per_second,0)+' images/s':''):'';
+el('eta').textContent=valid(p.phase_eta_seconds)&&['training','validation'].includes(p.phase)?'Phase remaining ≈ '+duration(p.phase_eta_seconds)+(valid(p.samples_per_second)?' · '+fixed(p.samples_per_second,0)+' images/s':''):'';
 el('best').textContent=p.best_epoch?'Best validation BCE '+fixed(p.best_val_loss)+' at epoch '+p.best_epoch+' · patience '+p.bad_epochs+' / '+p.patience:'';
 const gpu=data.gpu;el('gpu').textContent=gpu?'GPU '+gpu.utilization+'% · VRAM '+(gpu.memory_used_mib/1024).toFixed(1)+' / '+(gpu.memory_total_mib/1024).toFixed(1)+' GiB':data.environment?.gpu||'GPU information unavailable';
 el('updated').textContent='Updated '+new Date(data.server_utc).toLocaleTimeString('en-GB',{timeZone:'Asia/Bangkok'})+' · Bangkok (UTC+7)';

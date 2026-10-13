@@ -17,6 +17,8 @@ import time
 import traceback
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from aig.io import atomic_write_json
 DATASETS = ("progan", "tiny_genimage", "cifake")
 MODELS = ("fixed_filter_cnn", "learned_filter_cnn", "dual_cnn_128",
           "fixed_filter_kcnet", "finetuned_cnn_kcnet")
@@ -61,11 +63,7 @@ def read_json(path, default=None):
 
 
 def write_json(path, value):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(path.suffix + ".part")
-    temporary.write_text(json.dumps(value, indent=2, allow_nan=False) + "\n", encoding="utf-8")
-    temporary.replace(path)
+    atomic_write_json(path, value)
 
 
 def make_jobs(datasets=DATASETS, models=MODELS, seeds=(42,)):
@@ -131,6 +129,42 @@ def snapshot_sources(batch):
     with (batch / "installed_requirements.txt").open("w", encoding="utf-8") as handle:
         subprocess.run([sys.executable, "-m", "pip", "freeze"], cwd=ROOT, stdout=handle, check=True)
     return source
+
+
+def load_live_view(state, batch, child_alive, manager_alive=True, gpu=None):
+    """Read telemetry without assuming a Windows venv launcher PID is the trainer."""
+    value = json.loads(json.dumps(state))
+    value.update(server_utc=utc_now(), gpu=gpu, child_alive=child_alive, manager_alive=manager_alive)
+    active = next((job for job in value['jobs'] if job['id'] == value.get('active_job')), None)
+    if active:
+        run = Path(batch) / 'experiments' / active['model'] / active['dataset'] / f"seed_{active['seed']}"
+        progress = read_json(run / 'progress.json')
+        if active.get('status') == 'training' and progress:
+            fresh = (progress.get('updated_utc', '') >= active.get('started_utc', '')
+                     and progress.get('model') == active['model'] and progress.get('dataset') == active['dataset']
+                     and progress.get('seed') == active['seed'])
+            if not fresh:
+                progress = None
+        value['progress'] = progress
+        value['process_pid'] = active.get('pid')
+        if active.get('status') == 'training' and progress:
+            value['process_pid'] = progress.get('pid')
+            value['child_alive'] = child_alive and pid_alive(progress.get('pid'))
+        try:
+            with (run / 'history.csv').open(newline='', encoding='utf-8') as handle:
+                value['history'] = list(csv.DictReader(handle))
+        except OSError:
+            value['history'] = []
+        if active.get('log'):
+            try:
+                with (ROOT / active['log']).open('rb') as handle:
+                    handle.seek(max(0, handle.seek(0, 2) - 12000))
+                    value['log_tail'] = handle.read().decode('utf-8', errors='replace')
+            except OSError:
+                value['log_tail'] = ''
+    if not manager_alive and value['status'] in ('preparing', 'running'):
+        value.update(status='interrupted', error='The queue manager is no longer running. Check live processes and resume from completed epoch checkpoints.')
+    return value
 
 
 class TrainingQueue:
@@ -344,29 +378,8 @@ class TrainingQueue:
     def view(self):
         with self.lock:
             value = json.loads(json.dumps(self.state))
-            value["child_alive"] = self.child is not None and self.child.poll() is None
-        value["server_utc"] = utc_now()
-        value["gpu"] = self.gpu()
-        active = next((job for job in value["jobs"] if job["id"] == value["active_job"]), None)
-        if active:
-            run = self.run_dir(active)
-            value["progress"] = read_json(run / "progress.json")
-            if (active.get("status") == "training" and value["progress"]
-                    and value["progress"].get("pid") != active.get("pid")):
-                value["progress"] = None
-            try:
-                with (run / "history.csv").open(newline="", encoding="utf-8") as handle:
-                    value["history"] = list(csv.DictReader(handle))
-            except OSError:
-                value["history"] = []
-            if active.get("log"):
-                try:
-                    with (ROOT / active["log"]).open("rb") as handle:
-                        handle.seek(max(0, handle.seek(0, 2) - 12000))
-                        value["log_tail"] = handle.read().decode("utf-8", errors="replace")
-                except OSError:
-                    value["log_tail"] = ""
-        return value
+            child_alive = self.child is not None and self.child.poll() is None
+        return load_live_view(value, self.batch, child_alive, gpu=self.gpu())
 
 
 def make_handler(queue):

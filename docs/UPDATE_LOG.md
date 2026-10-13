@@ -230,3 +230,34 @@ Preparation verified at **10:53:50 Asia/Bangkok (UTC+7)**. Training has not yet
 started at this preparation snapshot. Intended local output is
 `runs/full_comparison_20261013/`, with its live view at http://127.0.0.1:8765/.
 Source/script changes are local; the owner still handles GitHub publishing.
+
+### Launch, Windows reporting recovery, and live snapshot — 11:08:31 Asia/Bangkok (UTC+7)
+
+Started the full-only queue on this PC at approximately **10:55**, with the source
+snapshot in `runs/full_comparison_20261013/source/`. The first stage trained
+`fixed_filter_cnn` on full ProGAN and saved ten completed epochs. Windows venv
+launchers expose a different PID from the actual trainer; added a fresh-telemetry
+PID check and a read-only viewer at http://127.0.0.1:8766/ without interrupting the
+initial training process.
+
+At the epoch-11 reporting boundary, a Windows reader-sharing conflict prevented
+replacing `progress.json` and the initial trainer exited. The epoch-10 `last.pt`,
+validation-best checkpoint, optimizer/random states and history were preserved.
+Fixed JSON replacement with bounded retry and made optional progress IO failures
+nonfatal to training. Added regression tests; all **39 unit tests passed**.
+
+Stopped only the verified failed queue manager, preserved the original source as
+`source_v1/` with `source_files_v1.json`, and created a new source snapshot for the
+reporting repair. Original source diffs, package records, failure status and logs
+remain in the batch folder. No dataset/model/optimizer settings were changed.
+
+The queue resumed from epoch 10 with three carried bad epochs. At **11:08:31**,
+the actual manager and trainer were verified running, epoch 11 had completed,
+and epoch 12 was validating. The selected checkpoint was still epoch 7 with
+validation BCE **0.42013**. No new local full-run test evaluation had completed
+at this snapshot; the other 14 model/dataset stages remained queued. This is live
+training progress, not a test-set result or a claim that all 15 runs are finished.
+
+Check `status.json`, current child liveness, `progress.json` and the live log before
+reporting a newer status. The dashboard and automatic queue continue in background;
+source changes remain local and no GitHub push was performed.

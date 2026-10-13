@@ -64,6 +64,18 @@ If the server disconnects, the page says so rather than showing a saved status a
 proof of live training. The service binds only to the local PC's loopback address;
 it is not a public website or a remote-machine monitor.
 
+A read-only viewer can also observe an already-running batch without restarting
+the trainer. On Windows, for example:
+
+```powershell
+.\.venv\Scripts\python.exe tools/watch_training.py --batch-dir runs/full_comparison_20261013 --port 8766
+```
+
+Open http://127.0.0.1:8766/ for that viewer. It resolves the actual trainer PID from
+fresh telemetry because Windows virtual-environment launcher PIDs may differ.
+Both views reject stale progress from a previous process. Short JSON reader-lock
+conflicts are retried; a failed optional progress update does not abort training.
+
 ## Saved outputs and recovery
 
 Under the selected batch folder:

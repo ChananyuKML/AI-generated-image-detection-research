@@ -13,6 +13,7 @@ class TrainingProgress:
         self.path = Path(directory) / "progress.json"
         self.interval = interval
         self.last_write = float("-inf")
+        self.last_warning = float("-inf")
         self.phase_started = time.monotonic()
         self.state = {"model": model, "dataset": dataset, "seed": seed,
                       "requested_epochs": epochs, "completed_epochs": start_epoch,
@@ -25,8 +26,13 @@ class TrainingProgress:
         now = time.monotonic()
         if force or now - self.last_write >= self.interval:
             self.state["updated_utc"] = datetime.now(timezone.utc).isoformat()
-            write_json(self.path, self.state)
-            self.last_write = now
+            try:
+                write_json(self.path, self.state)
+            except OSError as error:
+                if now - self.last_warning > 60:
+                    print(f"Progress update unavailable; training continues: {error}", flush=True)
+                    self.last_warning = now
+            self.last_write = time.monotonic()
 
     def start_epoch(self, epoch):
         self.emit(force=True, epoch=epoch, phase="starting_epoch", batch=0, batches=0)

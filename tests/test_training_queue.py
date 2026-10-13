@@ -6,6 +6,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from argparse import Namespace
+from unittest.mock import patch
 
 import torch
 from torch.utils.data import DataLoader, TensorDataset
@@ -13,7 +14,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from aig.experiment import ROOT
 from aig.progress import TrainingProgress
 from aig.training import run_epoch
-from tools.run_full_training import TrainingQueue, make_jobs, pid_alive, write_json
+from tools.run_full_training import TrainingQueue, load_live_view, make_jobs, pid_alive, write_json
 
 
 class TrainingQueueTests(unittest.TestCase):
@@ -36,6 +37,28 @@ class TrainingQueueTests(unittest.TestCase):
     def test_pid_check_observes_current_process_without_signaling_it(self):
         self.assertTrue(pid_alive(os.getpid()))
         self.assertFalse(pid_alive(-1))
+
+    def test_live_view_accepts_fresh_trainer_pid_different_from_venv_launcher(self):
+        temporary_root = ROOT / 'tmp' / 'tests'
+        temporary_root.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=temporary_root) as directory:
+            batch = Path(directory)
+            job = {'id': 'progan/fixed_filter_cnn/seed_42', 'dataset': 'progan',
+                   'model': 'fixed_filter_cnn', 'seed': 42, 'pid': 100,
+                   'status': 'training', 'started_utc': '2026-10-13T03:00:00+00:00'}
+            state = {'status': 'running', 'jobs': [job], 'active_job': job['id']}
+            path = batch / 'experiments' / job['model'] / job['dataset'] / 'seed_42' / 'progress.json'
+            progress = {'model': job['model'], 'dataset': job['dataset'], 'seed': 42,
+                        'pid': 200, 'epoch': 4, 'updated_utc': '2026-10-13T03:10:00+00:00'}
+            write_json(path, progress)
+            with patch('tools.run_full_training.pid_alive', return_value=True):
+                value = load_live_view(state, batch, child_alive=True)
+            self.assertEqual(value['process_pid'], 200)
+            self.assertEqual(value['progress']['epoch'], 4)
+            self.assertTrue(value['child_alive'])
+            progress['updated_utc'] = '2026-10-12T03:10:00+00:00'
+            write_json(path, progress)
+            self.assertIsNone(load_live_view(state, batch, child_alive=True)['progress'])
 
     def queue_in(self, directory):
         args = Namespace(batch_dir=directory, datasets=['progan'], models=['fixed_filter_cnn'], seeds=[42],
