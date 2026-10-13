@@ -261,3 +261,22 @@ training progress, not a test-set result or a claim that all 15 runs are finishe
 Check `status.json`, current child liveness, `progress.json` and the live log before
 reporting a newer status. The dashboard and automatic queue continue in background;
 source changes remain local and no GitHub push was performed.
+
+### First completed full run and automatic queue advance — 11:12:46 Asia/Bangkok (UTC+7)
+
+Full ProGAN `fixed_filter_cnn`, seed 42, completed **17 / 100 requested epochs**
+through validation patience. The selected checkpoint is epoch **7**, validation
+BCE **0.42013**. Held-out evaluation on **1,200 test images** measured accuracy
+**80.17%** and ROC-AUC **0.8904** on this RTX 5060 Ti execution. The results are in
+`runs/full_comparison_20261013/results.csv` and the run's evaluation folder.
+
+The queue automatically started full ProGAN `learned_filter_cnn`. At this recorded
+time its actual child and manager were alive, two epochs had completed, and epoch
+3 was training. One of 15 runs had completed, one was active, and 13 were queued.
+The read-only live view at http://127.0.0.1:8766/ was verified in the in-app browser
+and left open. Curves, batch telemetry and the completed-run table were visible.
+The original source snapshot was independently hash-verified after preservation.
+
+The full queue continues in background. These values are a dated snapshot; use
+the live process view and current artifacts for newer progress. No claim is made
+that all full comparisons are finished or will finish by a particular deadline.
