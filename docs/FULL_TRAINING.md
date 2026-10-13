@@ -1,8 +1,9 @@
 # Full comparison and live progress
 
-The active comparison uses **only the full prepared datasets**: `progan`,
-`tiny_genimage`, and `cifake`. All five supported models train on each dataset,
-giving 15 runs for seed 42. Each KC head initializes from the same dataset/seed's
+The active comparison uses **only full prepared sources**: `progan`,
+seven `tiny_protocol_<generator>` subsets, and `cifake`. All five supported models
+train on each source, giving 45 runs for seed 42 and 245 Tiny cross-generator
+test cells. Each KC head initializes from the same source dataset/seed's
 validation-selected fixed-filter CNN encoder. The default order runs ProGAN first,
 then Tiny GenImage, then CIFAKE.
 
@@ -14,6 +15,11 @@ Prepare the environment and sources if they are not already available:
 python scripts/run.py setup --compute auto
 python scripts/run.py data --datasets progan tiny_genimage cifake
 ```
+
+Then run project Python on `tools/prepare_genimage_protocol.py` (see
+[GENIMAGE_TESTING.md](GENIMAGE_TESTING.md)). The default queue uses
+`--genimage-protocol cross-generator`. `--genimage-protocol pooled` preserves the
+older 15-run mixed-generator experiment for historical use.
 
 Start from the repository root on Windows:
 

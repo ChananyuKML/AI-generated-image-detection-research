@@ -11,6 +11,11 @@ prototype (`_proto`) experiments are deferred.
 The current training scope is the full prepared `progan`, `tiny_genimage`, and
 `cifake` datasets with all five supported models. Do not schedule POC variants for
 the active comparison. Synthetic data remains appropriate for code-only tests.
+Tiny GenImage now uses the approved **full 7×7 cross-generator matrix for each model**,
+with original supplied val images reserved entirely for final test and selection
+validation taken from original train. Read `docs/GENIMAGE_TESTING.md` for protocol
+names, leakage audit, averages, and the missing SD1.4 limitation. A pooled Tiny
+detector is not a row in this source-generator protocol.
 
 Follow the current user's request when it changes this scope. Preserve unrelated
 work and inspect `git status` before editing. The owner currently handles GitHub

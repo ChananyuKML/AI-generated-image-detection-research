@@ -19,6 +19,7 @@ import traceback
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from aig.io import atomic_write_json
+from aig.genimage_protocol import DATASETS as GENIMAGE_DATASETS, PREFIX as GENIMAGE_PREFIX, matrix_summary
 DATASETS = ("progan", "tiny_genimage", "cifake")
 MODELS = ("fixed_filter_cnn", "learned_filter_cnn", "dual_cnn_128",
           "fixed_filter_kcnet", "finetuned_cnn_kcnet")
@@ -66,16 +67,26 @@ def write_json(path, value):
     atomic_write_json(path, value)
 
 
-def make_jobs(datasets=DATASETS, models=MODELS, seeds=(42,)):
+def make_jobs(datasets=DATASETS, models=MODELS, seeds=(42,), genimage_protocol='pooled'):
     if not set(datasets).issubset(DATASETS) or not set(models).issubset(MODELS):
         raise ValueError("This queue accepts only full datasets and supported binary models.")
     if len(set(datasets)) != len(datasets) or len(set(models)) != len(models) or len(set(seeds)) != len(seeds):
         raise ValueError("Duplicate datasets, models, or seeds would reuse a run directory.")
     if any(model in KC_MODELS for model in models) and "fixed_filter_cnn" not in models:
         raise ValueError("Include fixed_filter_cnn so each KC job has its matched encoder.")
-    return [{"id": f"{dataset}/{model}/seed_{seed}", "dataset": dataset, "model": model,
-             "seed": seed, "status": "queued"}
-            for dataset in datasets for seed in seeds for model in MODELS if model in models]
+    if genimage_protocol not in ('pooled', 'cross-generator'):
+        raise ValueError('Unknown GenImage evaluation protocol.')
+    jobs = []
+    for family in datasets:
+        sources = GENIMAGE_DATASETS if family == 'tiny_genimage' and genimage_protocol == 'cross-generator' else (family,)
+        for dataset in sources:
+            for seed in seeds:
+                for model in MODELS:
+                    if model in models:
+                        jobs.append({'id': f'{dataset}/{model}/seed_{seed}', 'dataset': dataset, 'model': model,
+                                     'seed': seed, 'status': 'queued', 'dataset_family': family,
+                                     'evaluation_targets': list(GENIMAGE_DATASETS) if dataset in GENIMAGE_DATASETS else [dataset]})
+    return jobs
 
 
 def inspect_dataset(name, data_root):
@@ -102,10 +113,13 @@ def inspect_dataset(name, data_root):
             "signature": {"kind": "manifest_sha256", "sha256": hashlib.sha256((root / "manifest.csv").read_bytes()).hexdigest()}}
 
 
-def snapshot_sources(batch):
-    source = batch / "source"
+def snapshot_sources(batch, revision='source'):
+    if not revision or not all(char.isalnum() or char in ('_', '-') for char in revision):
+        raise ValueError('Source revision must be a simple directory name.')
+    source = batch / revision
+    record_path = batch / ('source_files.json' if revision == 'source' else revision + '_files.json')
     if source.is_dir():
-        record = read_json(batch / "source_files.json")
+        record = read_json(record_path)
         if not record:
             raise ValueError("Existing source snapshot has no hash record.")
         for name, digest in record.items():
@@ -123,10 +137,10 @@ def snapshot_sources(batch):
             hashes[name] = hashlib.sha256(destination.read_bytes()).hexdigest()
     if not (source / "train.py").is_file():
         raise ValueError("The source snapshot is missing train.py.")
-    write_json(batch / "source_files.json", hashes)
-    with (batch / "source_changes.patch").open("wb") as handle:
+    write_json(record_path, hashes)
+    with (batch / ('source_changes.patch' if revision == 'source' else revision + '_changes.patch')).open("wb") as handle:
         subprocess.run(["git", "diff", "HEAD", "--binary"], cwd=ROOT, stdout=handle, check=True)
-    with (batch / "installed_requirements.txt").open("w", encoding="utf-8") as handle:
+    with (batch / ('installed_requirements.txt' if revision == 'source' else revision + '_requirements.txt')).open("w", encoding="utf-8") as handle:
         subprocess.run([sys.executable, "-m", "pip", "freeze"], cwd=ROOT, stdout=handle, check=True)
     return source
 
@@ -138,8 +152,9 @@ def load_live_view(state, batch, child_alive, manager_alive=True, gpu=None):
     active = next((job for job in value['jobs'] if job['id'] == value.get('active_job')), None)
     if active:
         run = Path(batch) / 'experiments' / active['model'] / active['dataset'] / f"seed_{active['seed']}"
-        progress = read_json(run / 'progress.json')
-        if active.get('status') == 'training' and progress:
+        evaluating_matrix = active.get('status') == 'evaluating' and active['dataset'] in GENIMAGE_DATASETS
+        progress = read_json(run / ('evaluation_progress.json' if evaluating_matrix else 'progress.json'))
+        if (active.get('status') == 'training' or evaluating_matrix) and progress:
             fresh = (progress.get('updated_utc', '') >= active.get('started_utc', '')
                      and progress.get('model') == active['model'] and progress.get('dataset') == active['dataset']
                      and progress.get('seed') == active['seed'])
@@ -147,7 +162,7 @@ def load_live_view(state, batch, child_alive, manager_alive=True, gpu=None):
                 progress = None
         value['progress'] = progress
         value['process_pid'] = active.get('pid')
-        if active.get('status') == 'training' and progress:
+        if (active.get('status') == 'training' or evaluating_matrix) and progress:
             value['process_pid'] = progress.get('pid')
             value['child_alive'] = child_alive and pid_alive(progress.get('pid'))
         try:
@@ -164,6 +179,8 @@ def load_live_view(state, batch, child_alive, manager_alive=True, gpu=None):
                 value['log_tail'] = ''
     if not manager_alive and value['status'] in ('preparing', 'running'):
         value.update(status='interrupted', error='The queue manager is no longer running. Check live processes and resume from completed epoch checkpoints.')
+    value['genimage_matrices'] = read_json(Path(batch) / 'genimage_matrices.json', {'matrices': []})
+    value['protocol_switch'] = read_json(Path(batch) / 'genimage_protocol_switch.json')
     return value
 
 
@@ -177,7 +194,8 @@ class TrainingQueue:
         if not self.batch.is_relative_to(ROOT / "runs"):
             raise ValueError("Batch files must be under the project's ignored runs folder.")
         self.data_root = (ROOT / "dataset" / "prepared").resolve()
-        jobs = make_jobs(args.datasets, args.models, args.seeds)
+        protocol = getattr(args, 'genimage_protocol', 'pooled')
+        jobs = make_jobs(args.datasets, args.models, args.seeds, protocol)
         self.batch.mkdir(parents=True, exist_ok=True)
         self.lockfile = self.batch / "manager.lock"
         if self.lockfile.exists():
@@ -191,10 +209,17 @@ class TrainingQueue:
         self.plan = {"datasets": args.datasets, "models": [model for model in MODELS if model in args.models],
                      "seeds": args.seeds, "epochs": args.epochs, "patience": args.patience,
                      "min_delta": 0.0, "batch_size": args.batch_size, "lr": 1e-4, "workers": args.workers,
-                     "device": "cuda", "data_root": str(self.data_root), "jobs": [job["id"] for job in jobs]}
+                     "device": "cuda", "data_root": str(self.data_root), "jobs": [job["id"] for job in jobs],
+                     'genimage_protocol': protocol, 'source_revision': getattr(args, 'source_revision', 'source')}
         previous = read_json(self.batch / "plan.json")
         if previous and previous != self.plan:
-            raise ValueError("Existing batch plan differs. Select a new --batch-dir.")
+            if not getattr(args, 'replan', False):
+                raise ValueError("Existing batch plan differs. Select a new --batch-dir or an explicit --replan.")
+            for key in ('seeds', 'epochs', 'patience', 'batch_size', 'lr', 'workers', 'data_root'):
+                if previous[key] != self.plan[key]:
+                    raise ValueError(f'Replanning must preserve existing training settings: {key}')
+            revision = self.batch / ('plan_before_replan_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S') + '.json')
+            write_json(revision, previous)
         write_json(self.batch / "plan.json", self.plan)
         self.state = {"status": "preparing", "jobs": jobs, "active_job": None,
                       "manager_pid": os.getpid(), "started_utc": utc_now(),
@@ -313,8 +338,9 @@ class TrainingQueue:
             torch.ones(1, device="cuda").sum().item()
             self.state["environment"] = {"python": sys.version.split()[0], "torch": str(torch.__version__),
                                          "gpu": torch.cuda.get_device_name(0), "sleep_inhibited": prevented_sleep}
-            self.state["datasets"] = {name: inspect_dataset(name, self.data_root) for name in self.args.datasets}
-            self.source = snapshot_sources(self.batch)
+            required = {job['dataset'] for job in self.state['jobs']}
+            self.state["datasets"] = {name: inspect_dataset(name, self.data_root) for name in sorted(required)}
+            self.source = snapshot_sources(self.batch, getattr(self.args, 'source_revision', 'source'))
             self.state["source_dir"] = str(self.source)
             self.state["status"] = "running"
             self.save()
@@ -326,10 +352,26 @@ class TrainingQueue:
                 if arguments:
                     self.launch(job, arguments, "training")
                 job["summary"] = read_json(self.run_dir(job) / "summary.json")
-                self.launch(job, [str(self.source / "evaluate.py"), "--checkpoint", str(self.run_dir(job) / "best.pt"),
-                                  "--data-root", str(self.data_root), "--dataset", job["dataset"], "--device", "cuda",
-                                  "--batch-size", str(self.args.batch_size), "--workers", str(self.args.workers)], "evaluating")
-                metrics = read_json(self.run_dir(job) / "evaluation" / job["dataset"] / "test" / "metrics.json")
+                if job['dataset'] in GENIMAGE_DATASETS:
+                    report = self.run_dir(job) / 'genimage_evaluation' / 'matrix_row.json'
+                    evaluation = [str(self.source / 'evaluate_genimage.py'), '--checkpoint', str(self.run_dir(job) / 'best.pt'),
+                                  '--data-root', str(self.data_root), '--device', 'cuda', '--batch-size', str(self.args.batch_size),
+                                  '--workers', str(self.args.workers)]
+                else:
+                    report = self.run_dir(job) / 'evaluation' / job['dataset'] / 'test' / 'metrics.json'
+                    evaluation = [str(self.source / 'evaluate.py'), '--checkpoint', str(self.run_dir(job) / 'best.pt'),
+                                  '--data-root', str(self.data_root), '--dataset', job['dataset'], '--device', 'cuda',
+                                  '--batch-size', str(self.args.batch_size), '--workers', str(self.args.workers)]
+                metrics = read_json(report)
+                reusable = metrics and not arguments and metrics.get('checkpoint_epoch') == job['summary']['best_epoch']
+                if reusable:
+                    with (self.run_dir(job) / 'best.pt').open('rb') as handle:
+                        reusable = metrics.get('checkpoint_sha256') == hashlib.file_digest(handle, 'sha256').hexdigest()
+                if reusable:
+                    print(f"Reusing completed evaluation: {job['id']}", flush=True)
+                else:
+                    self.launch(job, evaluation, 'evaluating')
+                    metrics = read_json(report)
                 if not metrics:
                     raise RuntimeError("Evaluation did not produce metrics.json.")
                 job.update(status="completed", finished_utc=utc_now(), metrics=metrics)
@@ -363,6 +405,32 @@ class TrainingQueue:
                 writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
                 writer.writeheader()
                 writer.writerows(rows)
+        matrices, cells = [], []
+        for model in self.plan['models']:
+            for seed in self.plan['seeds']:
+                selected = [cell for job in self.state['jobs'] if job['status'] == 'completed'
+                            and job['model'] == model and job['seed'] == seed
+                            for cell in job['metrics'].get('results', [])]
+                if any(job['dataset'] in GENIMAGE_DATASETS for job in self.state['jobs']):
+                    matrices.append(dict(matrix_summary(selected), model=model, seed=seed))
+                cells.extend(selected)
+        write_json(self.batch / 'genimage_matrices.json', {'matrices': matrices,
+                   'protocol': 'seven-generator subset adaptation', 'missing_official_generators': ['sdv4']})
+        if matrices:
+            columns = ['model', 'seed', *matrices[0]['generators'], 'avg_accuracy', 'off_diagonal_accuracy', 'complete']
+            with (self.batch / 'genimage_table4.csv').open('w', newline='', encoding='utf-8') as handle:
+                writer = csv.DictWriter(handle, fieldnames=columns)
+                writer.writeheader()
+                for matrix in matrices:
+                    writer.writerow(dict(matrix['column_means'], model=matrix['model'], seed=matrix['seed'],
+                                         avg_accuracy=matrix['macro_accuracy'], off_diagonal_accuracy=matrix['off_diagonal_accuracy'],
+                                         complete=matrix['complete']))
+        if cells:
+            with (self.batch / 'genimage_matrix_cells.csv').open('w', newline='', encoding='utf-8') as handle:
+                fields = ['model', 'seed', 'training_generator', 'testing_generator', 'accuracy', 'roc_auc', 'images', 'bce', 'checkpoint_epoch']
+                writer = csv.DictWriter(handle, fieldnames=fields, extrasaction='ignore')
+                writer.writeheader()
+                writer.writerows(cells)
 
     def gpu(self):
         if time.monotonic() - self.gpu_updated > 8:
@@ -417,6 +485,9 @@ def main():
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument('--genimage-protocol', choices=('pooled', 'cross-generator'), default='cross-generator')
+    parser.add_argument('--source-revision', default='source')
+    parser.add_argument('--replan', action='store_true', help='Explicitly replace dataset/test scheduling while preserving existing run settings')
     args = parser.parse_args()
     if (args.epochs < 1 or args.patience < 0 or args.batch_size < 1 or args.workers < 0
             or not 1024 <= args.port <= 65535 or any(not 0 <= seed < 2**32 for seed in args.seeds)):

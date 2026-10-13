@@ -7,8 +7,9 @@ followed by the original three-block CNN and 128/64/1 classifier.
 
 This project provides a portable Windows/Linux workflow for environment setup,
 dataset download/preparation, training, checkpoint resume, and held-out evaluation.
-The current comparison uses the full prepared ProGAN, Tiny GenImage, and CIFAKE
-datasets with all five supported models. The full queue uses AdamW at 1e-4,
+The current comparison uses full prepared ProGAN and CIFAKE, plus seven separate
+Tiny GenImage generator subsets with all five supported models. Tiny follows a
+7×7 train-generator/test-generator matrix. The full queue uses AdamW at 1e-4,
 batch size 32, 224px input, seed 42, a 100-epoch maximum, and validation patience 10.
 
 ## Full training with live progress
@@ -23,10 +24,15 @@ batch size 32, 224px input, seed 42, a 100-epoch maximum, and validation patienc
 .venv/bin/python tools/run_full_training.py
 ```
 
+First run `python scripts/run.py data --datasets progan tiny_genimage cifake` and
+project Python on `tools/prepare_genimage_protocol.py` to create the held-out
+seven-generator protocol. See [GENIMAGE_TESTING](docs/GENIMAGE_TESTING.md).
+
 Open **http://127.0.0.1:8765/** to see the actual process, batch progress, epoch
 loss/accuracy curves, queue, GPU usage, logs, and completed test metrics. This runs
-15 full-dataset training stages and reuses each dataset's fixed-filter encoder for
-both KC variants. See [FULL_TRAINING](docs/FULL_TRAINING.md) for setup, recovery,
+45 training stages (35 Tiny generator detectors, 5 ProGAN, 5 CIFAKE) and reuses each
+source dataset's fixed-filter encoder for both KC variants. Tiny testing produces
+245 matrix cells, with macro and unseen-generator averages. See [FULL_TRAINING](docs/FULL_TRAINING.md) for setup, recovery,
 and background-launch instructions. POC commands below are historical quick-start
 examples; they are not used by the full comparison queue.
 

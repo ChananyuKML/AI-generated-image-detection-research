@@ -280,3 +280,45 @@ The original source snapshot was independently hash-verified after preservation.
 The full queue continues in background. These values are a dated snapshot; use
 the live process view and current artifacts for newer progress. No claim is made
 that all full comparisons are finished or will finish by a particular deadline.
+
+## 2026-10-13 — Approved GenImage-style 7×7 Tiny testing
+
+The owner requested following GenImage testing instructions and explicitly selected
+the **full 7×7 training-generator × testing-generator matrix for each model**.
+Checked the official repository and paper section 3.2: the published experiment
+uses eight generators/64 cells per method. This Tiny release contains seven and
+lacks SD1.4, so the implemented protocol is a clearly labelled subset adaptation.
+
+- Created seven `tiny_protocol_<generator>` datasets from the verified full Tiny
+  source archive/index. All supplied val images are reserved as final test: 500
+  real plus 500 AI per generator, 7,000 total. Selection validation comes only
+  from original training groups, with deterministic 10% allocation/class balancing.
+  No POC sampling caps are used. Original image bytes and source provenance remain.
+- Grouped the shared ADM/Midjourney real training duplicate globally. Audited
+  train/selection-val/test identities across all source/target pairs: no exact
+  cross-role overlap. Near duplicates remain unaudited. Existing prepared exports
+  and run outputs were preserved; these new signatures prevent incompatible reuse.
+- Added single-checkpoint/seven-target evaluation, predictions, per-target metrics,
+  source-row summaries, 7×7 accuracy/AUC matrices, column means and Table-4-style
+  equal-cell macro accuracy. Diagonal and 42-cell off-diagonal means are separate;
+  incomplete final averages remain blank. Test labels do not tune selection/threshold.
+- The revised schedule has 35 Tiny source detectors and 245 test cells, plus the
+  existing five ProGAN and five CIFAKE stages: **45 training runs for seed 42**.
+  Model architecture, optimizer, batch 32/workers 4, 100-epoch maximum, validation
+  patience 10, and matching source-specific KC encoder initialization are unchanged.
+- All **43 unit tests** passed. A synthetic code-only workflow trained one source
+  checkpoint and successfully evaluated all seven target fixtures, verifying one
+  checkpoint hash, predictions, provenance and macro aggregation. Synthetic scores
+  are not research results. Protocol Python/dashboard JS and Git diff checks passed.
+
+At **12:27:46 Asia/Bangkok (UTC+7)**, ProGAN `finetuned_cnn_kcnet` was still running
+in epoch 14 with 13 completed epochs. The approved switch coordinator was verified
+alive, waiting for the Tiny boundary. It preserves this ProGAN work, then replaces
+the upcoming pooled Tiny stage with the new per-generator plan/source revision.
+The current 15-stage process is not claimed to have already switched at this snapshot.
+Its control record is `runs/full_comparison_20261013/genimage_protocol_switch.json`.
+
+The live view has a selectable matrix panel. New Tiny protocol runs and final
+matrix scores have not completed at this recorded time. See
+[GENIMAGE_TESTING.md](GENIMAGE_TESTING.md) for preparation, execution, averages,
+limitations, and transition details. Source changes remain local; no GitHub push.
