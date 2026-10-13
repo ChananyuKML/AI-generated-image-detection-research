@@ -19,7 +19,7 @@ Do not put access tokens in repository URLs, scripts, or documentation.
 
 ## Review the local source snapshot
 
-Open a terminal in `aig_dec`:
+Open a terminal in `AI-generated-image-detection-research`:
 
 ```sh
 git status --short
@@ -61,6 +61,14 @@ git push -u origin main
 ```
 
 ## Clone, update, and train on another PC
+
+For later source updates on the current PC, first read [UPDATE_LOG.md](UPDATE_LOG.md)
+and review `git status --short` and `git diff`. Stage only the intended source,
+tests, small configuration, and documentation, then create a local commit.
+Run `python scripts/publish_github.py` to preview the destination and source-only
+checks. The owner performs the actual push with `git push origin main` or the
+helper's explicit `--push` option. Update-log results summarize local measurements;
+the ignored datasets and complete run folders require a separate transfer.
 
 ```sh
 git clone https://github.com/ChananyuKML/AI-generated-image-detection-research.git

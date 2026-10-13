@@ -13,10 +13,12 @@ from torch.utils.data import Dataset
 
 from networks.hog_cnn import DualCNN_128
 from networks.learned_filters import LearnableFilterCNN128
+from networks.kcnet import FixedFilterKCNet
 from utils.custom_transforms import gray_center_224, raw_grad_224
 
 ROOT = Path(__file__).resolve().parents[1]
-MODELS = ("learned_filter_cnn", "fixed_filter_cnn", "dual_cnn_128")
+KC_MODELS = ("fixed_filter_kcnet", "finetuned_cnn_kcnet")
+MODELS = ("learned_filter_cnn", "fixed_filter_cnn", "dual_cnn_128", *KC_MODELS)
 LABELS = {"nature": 0, "ai": 1}
 EXTENSIONS = {".png", ".jpg", ".jpeg"}
 
@@ -32,7 +34,11 @@ def dataset_path(data_root, dataset):
     return project_path(data_root) / dataset
 
 
-def build_model(name):
+def build_model(name, model_config=None):
+    if name in KC_MODELS:
+        return FixedFilterKCNet(train_cnn=name == "finetuned_cnn_kcnet", **(model_config or {})), gray_center_224
+    if model_config:
+        raise ValueError("Architecture options are only supported for KC models")
     if name == "learned_filter_cnn":
         return LearnableFilterCNN128(trainable=True), gray_center_224
     if name == "fixed_filter_cnn":
@@ -40,6 +46,44 @@ def build_model(name):
     if name == "dual_cnn_128":
         return DualCNN_128(), raw_grad_224
     raise ValueError(f"Unsupported model: {name}")
+
+
+def initialize_kc_encoder(model, checkpoint_path, dataset, signature):
+    """Copy frontend/CNN from a validation-selected fixed-filter checkpoint."""
+    if not isinstance(model, FixedFilterKCNet):
+        raise TypeError("Encoder initialization requires a KC model")
+    path = project_path(checkpoint_path)
+    checkpoint = torch.load(path, map_location="cpu", weights_only=True)
+    config = checkpoint.get("config", {})
+    if checkpoint.get("format_version") != 1 or config.get("model") != "fixed_filter_cnn":
+        raise ValueError("Use a current fixed_filter_cnn checkpoint to initialize the KC encoder")
+    if (config.get("selection") != "minimum validation BCE"
+            or checkpoint.get("epoch") != checkpoint.get("best_epoch")
+            or checkpoint.get("epoch", 0) < 1):
+        raise ValueError("The encoder must be validation-selected best.pt, not an arbitrary last.pt")
+    if config.get("dataset") != dataset or config.get("dataset_signature") != signature:
+        raise ValueError("Encoder dataset/signature must match this controlled head experiment")
+    if (config.get("input_size") != model.img_size or config.get("labels") != LABELS
+            or config.get("transform") != "gray_center_224"):
+        raise ValueError("Encoder input/label configuration does not match the KC model")
+    state = checkpoint["model_state"]
+    components = {}
+    for prefix, module in (("frontend.", model.frontend), ("cnn_branch.", model.cnn_branch)):
+        values = {key.removeprefix(prefix): value for key, value in state.items() if key.startswith(prefix)}
+        expected = module.state_dict()
+        if values.keys() != expected.keys() or any(values[key].shape != expected[key].shape for key in expected):
+            raise ValueError(f"Encoder checkpoint has incompatible {prefix} state")
+        if not all(torch.isfinite(value).all() for value in values.values()):
+            raise ValueError("Encoder checkpoint contains non-finite values")
+        components[prefix] = values
+    for prefix, module in (("frontend.", model.frontend), ("cnn_branch.", model.cnn_branch)):
+        module.load_state_dict(components[prefix], strict=True)
+    with path.open("rb") as handle:
+        digest = hashlib.file_digest(handle, "sha256").hexdigest()
+    return {"path": path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(path),
+            "sha256": digest, "model": config["model"], "epoch": checkpoint["epoch"],
+            "selection": config["selection"], "training_dataset": config["dataset"],
+            "dataset_signature": config["dataset_signature"], "seed": config["seed"]}
 
 
 def select_device(name):

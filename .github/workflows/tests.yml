@@ -16,4 +16,4 @@ jobs:
       - name: Run dataset-free unit tests
         run: python scripts/run.py test
       - name: Verify CPU train, resume, and evaluation
-        run: .venv/bin/python tools/check_workflow.py --device cpu --models learned_filter_cnn
+        run: .venv/bin/python tools/check_workflow.py --device cpu --models learned_filter_cnn fixed_filter_kcnet finetuned_cnn_kcnet

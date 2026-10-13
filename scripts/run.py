@@ -1,6 +1,7 @@
 """Cross-platform launcher; no virtual-environment activation is necessary."""
 
 import argparse
+import math
 import os
 from pathlib import Path
 import subprocess
@@ -57,16 +58,24 @@ def main(argv=None):
         parser = argparse.ArgumentParser(description="Set up, download, prepare, train, and evaluate one POC dataset")
         parser.add_argument("--dataset", choices=("cifake_poc", "progan_poc", "tiny_genimage_poc"), default="progan_poc")
         parser.add_argument("--compute", choices=("auto", "cpu", "cu126", "cu128", "cu130"), default="auto")
-        parser.add_argument("--model", choices=("learned_filter_cnn", "fixed_filter_cnn", "dual_cnn_128"), default="learned_filter_cnn")
+        parser.add_argument("--model", choices=("learned_filter_cnn", "fixed_filter_cnn", "dual_cnn_128", "fixed_filter_kcnet", "finetuned_cnn_kcnet"), default="learned_filter_cnn")
+        parser.add_argument("--encoder-checkpoint", help="Validation-selected fixed_filter_cnn best.pt for a fresh KC run")
         parser.add_argument("--epochs", type=int, default=20)
         parser.add_argument("--batch-size", type=int, default=32)
         parser.add_argument("--seed", type=int, default=42)
         parser.add_argument("--workers", type=int, default=0)
+        parser.add_argument("--patience", type=int, help="Validation BCE patience; 0 disables")
+        parser.add_argument("--min-delta", type=float, help="Minimum validation BCE decrease that resets patience")
         parser.add_argument("--skip-setup", action="store_true")
         parser.add_argument("--skip-data", action="store_true")
         args = parser.parse_args(tail)
         if args.epochs < 1 or args.batch_size < 1 or args.workers < 0 or not 0 <= args.seed < 2**32:
             parser.error("Use positive epochs/batch size, nonnegative workers, and seed in [0, 2**32).")
+        if (args.model in ("fixed_filter_kcnet", "finetuned_cnn_kcnet")) != bool(args.encoder_checkpoint):
+            parser.error("--encoder-checkpoint is required only with a KC model.")
+        if ((args.patience is not None and args.patience < 0)
+                or (args.min_delta is not None and (not math.isfinite(args.min_delta) or args.min_delta < 0))):
+            parser.error("Use nonnegative patience and finite nonnegative min_delta.")
         if not args.skip_setup:
             invoke(["scripts/setup_env.py", "--compute", args.compute], base_python=True)
         if not args.skip_data:
@@ -75,6 +84,12 @@ def main(argv=None):
         common = ["--dataset", args.dataset, "--model", args.model, "--epochs", str(args.epochs),
                   "--batch-size", str(args.batch_size), "--seed", str(args.seed),
                   "--workers", str(args.workers), "--device", device]
+        if args.encoder_checkpoint:
+            common += ["--encoder-checkpoint", args.encoder_checkpoint]
+        if args.patience is not None:
+            common += ["--patience", str(args.patience)]
+        if args.min_delta is not None:
+            common += ["--min-delta", str(args.min_delta)]
         invoke(["train.py", *common, "--check-only"])
         invoke(["train.py", *common])
         checkpoint = f"runs/{args.model}/{args.dataset}/seed_{args.seed}/best.pt"

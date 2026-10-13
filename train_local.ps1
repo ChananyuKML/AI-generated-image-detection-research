@@ -4,7 +4,7 @@ Train a local binary detector using the project's virtual environment.
 #>
 [CmdletBinding()]
 param(
-    [ValidateSet('learned_filter_cnn', 'fixed_filter_cnn', 'dual_cnn_128')]
+    [ValidateSet('learned_filter_cnn', 'fixed_filter_cnn', 'dual_cnn_128', 'fixed_filter_kcnet', 'finetuned_cnn_kcnet')]
     [string]$Network = 'learned_filter_cnn',
     [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9_-]*$')]
     [string]$Dataset = 'sdv4',
@@ -18,6 +18,11 @@ param(
     [string]$Device = 'cuda',
     [string]$RunDir,
     [string]$Resume,
+    [string]$EncoderCheckpoint,
+    [ValidateRange(0, 2147483647)]
+    [int]$Patience,
+    [ValidateScript({ $_ -ge 0 -and -not [double]::IsNaN($_) -and -not [double]::IsInfinity($_) })]
+    [double]$MinDelta,
     [switch]$CheckOnly
 )
 $ErrorActionPreference = 'Stop'
@@ -34,6 +39,9 @@ $trainingArguments = @(
 )
 if ($RunDir) { $trainingArguments += @('--run-dir', $RunDir) }
 if ($Resume) { $trainingArguments += @('--resume', $Resume) }
+if ($EncoderCheckpoint) { $trainingArguments += @('--encoder-checkpoint', $EncoderCheckpoint) }
+if ($PSBoundParameters.ContainsKey('Patience')) { $trainingArguments += @('--patience', [string]$Patience) }
+if ($PSBoundParameters.ContainsKey('MinDelta')) { $trainingArguments += @('--min-delta', $MinDelta.ToString('G', [System.Globalization.CultureInfo]::InvariantCulture)) }
 if ($CheckOnly) { $trainingArguments += '--check-only' }
 & $projectPython @trainingArguments
 exit $LASTEXITCODE

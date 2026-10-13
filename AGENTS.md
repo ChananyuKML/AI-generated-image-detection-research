@@ -12,6 +12,21 @@ Follow the current user's request when it changes this scope. Preserve unrelated
 work and inspect `git status` before editing. The owner currently handles GitHub
 uploads manually; prepare local changes for pushing unless asked to publish.
 
+## Update log
+
+Read [docs/UPDATE_LOG.md](docs/UPDATE_LOG.md) before starting repository work.
+It records the latest implementation changes, completed checks, measured results,
+and unfinished experiments. Treat run status as a dated snapshot; check current
+logs/checkpoints and the live process before reporting that training is running
+or complete. A saved `status: running` alone does not prove a process is active.
+
+After meaningful code, dataset, experiment, or workflow changes, append a dated
+entry to that log. Include what changed, what was actually checked, results with
+dataset/model/seed and completed versus requested epochs, and remaining work or
+machine-specific limits. Give an explicit timezone for progress snapshots.
+Preserve previous entries and keep generated datasets, checkpoints, manifests,
+and full run outputs outside Git; record their relative local paths instead.
+
 ## Where to work
 
 | Location | Purpose |
@@ -24,6 +39,7 @@ uploads manually; prepare local changes for pushing unless asked to publish.
 | `scripts/run.py`, `scripts/setup_env.py` | Portable launcher and environment setup |
 | `tools/download_benchmarks.py`, `tools/prepare_benchmarks.py` | Source verification and dataset preparation |
 | `tests/`, `tools/check_workflow.py` | Unit tests and synthetic workflow checks |
+| `docs/UPDATE_LOG.md` | Dated implementation, validation, and experiment updates |
 | `legacy/` | Preserved older experiments; not the supported workflow |
 
 Use `docs/METHOD.md` for architecture/filter changes, `docs/DATASETS.md` for dataset
@@ -35,10 +51,20 @@ records checks on the original PC, not proof of the destination PC's environment
 
 - Keep **two channels: magnitude and one angle channel**. Do not silently change
   to magnitude plus sine/cosine, add GroupNorm, or redesign the classifier.
-- Supported models are `learned_filter_cnn`, `fixed_filter_cnn`, and `dual_cnn_128`.
+- The original supported models are `learned_filter_cnn`, `fixed_filter_cnn`, and `dual_cnn_128`.
   The first two receive raw grayscale with `gray_center_224`; the original baseline
   receives fixed gradient maps with `raw_grad_224`. Applying a gradient transform
   before the learned frontend would filter the input twice.
+- `fixed_filter_kcnet` is a separate supported head experiment: frozen pretrained
+  fixed-filter frontend/CNN, 4x4 pooling, per-image L2 normalization, fixed sparse
+  random projection and a BCE-trained readout. Read `docs/METHOD.md` and
+  `docs/EXPERIMENTS.md` for its additional architecture and pretraining changes.
+  Fresh runs require a validation-selected `--encoder-checkpoint` matching the
+  dataset signature; resume/evaluation use embedded weights and projection indices.
+- `finetuned_cnn_kcnet` uses the same KC architecture and encoder initialization,
+  but trains the CNN and readout. Keep FFD filters and random projection fixed.
+  For a matched comparison, initialize from the same original fixed-filter encoder,
+  use the same fresh head/projection seeds and match the frozen KC run's settings.
 - Labels are `nature = 0` and `ai = 1`. Models output a single logit; training uses
   BCEWithLogitsLoss. Classification uses AI probability strictly greater than 0.5.
 - The learned/frozen pair shares the same CNN, FFD initialization, normalization,
@@ -53,6 +79,10 @@ records checks on the original PC, not proof of the destination PC's environment
   training seed 42, and workers 0. These are not claimed published-paper settings.
 - Select checkpoints by validation BCE. Never select a checkpoint or tune a
   threshold using test labels. Keep test held out for evaluation.
+- Optional `--patience`/`--min-delta` early stopping also uses validation BCE.
+  Preserve monitor state across resume, including reconstruction from older
+  checkpoints. `best.pt` remains the absolute-best BCE checkpoint; summaries must
+  report actual completed epochs separately from the maximum epoch target.
 
 ## Setup and commands on another PC
 
@@ -92,7 +122,7 @@ synthetic workflow check with project Python:
 ```
 
 Use `--device cuda` when checking CUDA behavior on a supported GPU. Omit `--models`
-to cover all three supported models. Documentation-only changes need content/link
+to cover all five supported models. Documentation-only changes need content/link
 and Git diff checks, not model training. Run benchmark training when it is part of
 the user's request; do not start long runs just to validate an unrelated code edit.
 

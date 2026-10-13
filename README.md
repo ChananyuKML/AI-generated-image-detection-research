@@ -58,10 +58,17 @@ See [dataset counts and protocols](docs/DATASETS.md) before choosing an experime
 | `learned_filter_cnn` | Raw grayscale; two trainable FFD-initialized filters | New method |
 | `fixed_filter_cnn` | Same frontend with frozen filters | Controlled ablation |
 | `dual_cnn_128` | Existing fixed magnitude/angle transform | Original implementation baseline |
+| `fixed_filter_kcnet` | Frozen pretrained two-channel CNN; fixed random projection and learned binary readout | Separate KCNet-inspired head experiment |
+| `finetuned_cnn_kcnet` | Same KC architecture and initialization; CNN and readout train | CNN trainability comparison |
 
 The frozen frontend shares the new method's numerical safeguards. The original
 baseline uses the original transform. Use the first two for the closest comparison
 of filter trainability. See [docs/METHOD.md](docs/METHOD.md).
+
+The KC models require `--encoder-checkpoint` for a fresh run and embed the encoder
+in their own checkpoints. The frozen variant trains its 4,097-parameter readout;
+the fine-tuned variant also trains the CNN. See
+[KC training and resume commands](docs/EXPERIMENTS.md#train-the-frozen-encoders-kc-head).
 
 ## Results and resume
 
@@ -80,10 +87,16 @@ python scripts/run.py train --dataset progan_poc --device cuda --epochs 40 --res
 existing run directory. Change `--seed` or `--run-dir` for another experiment.
 Copy the entire run folder when moving a resumable experiment to another PC.
 
+Training optionally supports validation-BCE early stopping with `--patience` and
+`--min-delta`. Counters survive resume, and summaries distinguish completed epochs
+from the maximum target. See [extension and stopping behavior](docs/EXPERIMENTS.md#extend-a-run-with-early-stopping).
+
 ## Project layout
 
 [`AGENTS.md`](AGENTS.md) contains repository guidance for Codex on another PC,
 including the research conventions, setup commands, validation, and data handling.
+Read [the update log](docs/UPDATE_LOG.md) for recent changes, verified experiment
+results, and dated training progress. Live run artifacts remain local under `runs/`.
 
 ```text
 aig/                    supported training/evaluation/data-loading workflow
@@ -119,6 +132,7 @@ Temporary test checkpoints are removed afterward; this does not train a benchmar
 
 [SETUP](docs/SETUP.md) · [DATASETS](docs/DATASETS.md) · [METHOD](docs/METHOD.md) ·
 [EXPERIMENTS](docs/EXPERIMENTS.md) · [GITHUB](docs/GITHUB.md) · [MIGRATION](docs/MIGRATION.md)
+· [UPDATE LOG](docs/UPDATE_LOG.md)
 
 The completed checks and machine-specific limits are recorded in
 [VALIDATION](docs/VALIDATION.md).

@@ -15,7 +15,7 @@ param(
                  'tiny_glide', 'tiny_midjourney', 'tiny_sdv5', 'tiny_vqdm', 'tiny_wukong')]
     [string]$Dataset = 'progan_poc',
 
-    [ValidateSet('learned_filter_cnn', 'fixed_filter_cnn', 'dual_cnn_128')]
+    [ValidateSet('learned_filter_cnn', 'fixed_filter_cnn', 'dual_cnn_128', 'fixed_filter_kcnet', 'finetuned_cnn_kcnet')]
     [string]$Network = 'learned_filter_cnn',
 
     [ValidateRange(1, 2147483647)]
@@ -33,6 +33,14 @@ param(
     [ValidateRange(0, 2147483647)]
     [int]$Seed = 42,
 
+    [string]$EncoderCheckpoint,
+
+    [ValidateRange(0, 2147483647)]
+    [int]$Patience,
+
+    [ValidateScript({ $_ -ge 0 -and -not [double]::IsNaN($_) -and -not [double]::IsInfinity($_) })]
+    [double]$MinDelta,
+
     [switch]$CheckOnly
 )
 
@@ -48,5 +56,8 @@ $taskParameters = @{
     Seed = $Seed
 }
 if ($CheckOnly) { $taskParameters.CheckOnly = $true }
+if ($EncoderCheckpoint) { $taskParameters.EncoderCheckpoint = $EncoderCheckpoint }
+if ($PSBoundParameters.ContainsKey('Patience')) { $taskParameters.Patience = $Patience }
+if ($PSBoundParameters.ContainsKey('MinDelta')) { $taskParameters.MinDelta = $MinDelta }
 & $taskLauncher @taskParameters
 exit $LASTEXITCODE

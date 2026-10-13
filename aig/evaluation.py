@@ -32,7 +32,7 @@ def main(argv=None):
         raise ValueError("Use best.pt or last.pt from current train.py. Legacy raw .pth files use legacy/test_binary.py.")
     config = checkpoint["config"]
     name = args.dataset or config["dataset"]
-    model, transform = build_model(config["model"])
+    model, transform = build_model(config["model"], config.get("model_config"))
     model.load_state_dict(checkpoint["model_state"])
     model.to(device).eval()
     root = dataset_path(args.data_root, name)
@@ -56,6 +56,8 @@ def main(argv=None):
                     "checkpoint": str(checkpoint_path), "checkpoint_sha256": digest,
                     "checkpoint_selection": config["selection"],
                     "threshold_selection": "fixed at 0.5; no test-set tuning"})
+    if "encoder_source" in config:
+        metrics.update(encoder_source=config["encoder_source"], model_config=config["model_config"])
     output_dir = project_path(args.output_dir) if args.output_dir else checkpoint_path.parent / "evaluation" / name / args.split
     write_json(output_dir / "metrics.json", metrics)
     with (output_dir / "predictions.csv").open("w", newline="", encoding="utf-8") as handle:
