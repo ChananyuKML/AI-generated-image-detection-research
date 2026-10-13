@@ -8,6 +8,10 @@ experiment replaces fixed gradient filters with trainable filters initialized fr
 the existing FFD implementation. The owner's current focus is binary classification;
 prototype (`_proto`) experiments are deferred.
 
+The current training scope is the full prepared `progan`, `tiny_genimage`, and
+`cifake` datasets with all five supported models. Do not schedule POC variants for
+the active comparison. Synthetic data remains appropriate for code-only tests.
+
 Follow the current user's request when it changes this scope. Preserve unrelated
 work and inspect `git status` before editing. The owner currently handles GitHub
 uploads manually; prepare local changes for pushing unless asked to publish.
@@ -39,6 +43,8 @@ and full run outputs outside Git; record their relative local paths instead.
 | `scripts/run.py`, `scripts/setup_env.py` | Portable launcher and environment setup |
 | `tools/download_benchmarks.py`, `tools/prepare_benchmarks.py` | Source verification and dataset preparation |
 | `tests/`, `tools/check_workflow.py` | Unit tests and synthetic workflow checks |
+| `tools/run_full_training.py`, `tools/training_dashboard.html` | Full-only resumable queue and live process dashboard |
+| `aig/progress.py` | Batch telemetry that must not change model weights or RNG state |
 | `docs/UPDATE_LOG.md` | Dated implementation, validation, and experiment updates |
 | `legacy/` | Preserved older experiments; not the supported workflow |
 
@@ -85,6 +91,11 @@ records checks on the original PC, not proof of the destination PC's environment
   report actual completed epochs separately from the maximum epoch target.
 
 ## Setup and commands on another PC
+
+For the active full-only comparison, follow [docs/FULL_TRAINING.md](docs/FULL_TRAINING.md).
+The queue trains a matching fixed-filter encoder before each dataset's KC models,
+snapshots the source, verifies manifests, and evaluates held-out test only after
+training finishes. Verify child PID/liveness and telemetry before reporting progress.
 
 Use Python 3.11–3.13. Recreate `.venv` on the destination; do not copy it across PCs.
 Run these from the repository root (`python3` may be needed on Linux):

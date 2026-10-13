@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI image detection — live training</title>
+<style>
+:root{color-scheme:light dark;--bg:#f4f6fa;--fg:#18202c;--card:#fff;--muted:#667183;--line:#dde3ec;--track:#e9eef5;--train:#2268ba;--val:#bc6412;--good:#168258;--bad:#bf3041;--shadow:0 4px 24px #1620340a}
+@media(prefers-color-scheme:dark){:root{--bg:#0e1420;--fg:#e7ecf4;--card:#172030;--muted:#a6b3c6;--line:#2c3a50;--track:#25334a;--train:#64afff;--val:#ffb66a;--good:#58d39e;--bad:#ff8a98;--shadow:none}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 system-ui,sans-serif}main{max-width:1380px;margin:auto;padding:28px}h1{font-size:24px;font-weight:600;margin:0}h2{font-size:16px;font-weight:600;margin:0 0 12px}p{margin:8px 0}.muted{color:var(--muted)}.top,.split,.metrics,.charts{display:flex;gap:20px;align-items:center;justify-content:space-between}.top{margin-bottom:20px}.tag{padding:6px 12px;border-radius:20px;background:var(--track);font-weight:600}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);margin-bottom:20px}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin:20px 0 12px}.value{font-size:24px;font-variant-numeric:tabular-nums}.label{font-size:12px;color:var(--muted)}progress{width:100%;height:10px;border:0;border-radius:6px;accent-color:var(--train);background:var(--track)}progress::-webkit-progress-bar{background:var(--track);border-radius:6px}progress::-webkit-progress-value{background:var(--train);border-radius:6px}.charts{align-items:stretch}.charts>.card{flex:1;min-width:0}svg{width:100%;height:220px}.legend{display:flex;gap:20px;font-size:12px;color:var(--muted)}.dot{display:inline-block;width:10px;height:3px;margin:0 6px 3px 0}.train{background:var(--train)}.val{background:var(--val)}.table-scroll{overflow:auto}table{width:100%;border-collapse:collapse;text-align:left;font-variant-numeric:tabular-nums}th{font-size:12px;color:var(--muted);font-weight:500;padding:10px;border-bottom:1px solid var(--line)}td{padding:11px 10px;border-bottom:1px solid var(--line);white-space:nowrap}tr.active{background:var(--track)}.completed{color:var(--good)}.failed{color:var(--bad)}pre{font:12px/1.6 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:280px;overflow:auto;color:var(--muted);margin-bottom:0}#error{color:var(--bad);white-space:pre-wrap}code{font:12px ui-monospace,monospace}details summary{cursor:pointer}footer{font-size:12px;color:var(--muted);overflow-wrap:anywhere}@media(max-width:850px){main{padding:16px}.charts{display:block}.metrics{grid-template-columns:repeat(2,1fr)}.top{align-items:flex-start}h1{font-size:21px}.card{padding:16px}.split{gap:10px;flex-wrap:wrap}}
+</style>
+</head>
+<body><main>
+<header class="top"><div><h1>AI-generated image detection</h1><p class="muted" id="scope">Full-dataset training · seed 42 · 15 runs</p></div><div class="tag" id="status" role="status">Connecting…</div></header>
+<section class="card" aria-label="Current training process">
+<div class="split"><div><h2 id="active">Preparing the training queue</h2><div class="muted" id="phase">Waiting for the first update</div></div><span class="muted" id="process"></span></div>
+<div class="metrics">
+<div><div class="label">Epoch / maximum</div><div class="value" id="epoch">—</div></div>
+<div><div class="label">Current phase BCE</div><div class="value" id="loss">—</div></div>
+<div><div class="label">Current phase accuracy</div><div class="value" id="accuracy">—</div></div>
+<div><div class="label">Completed runs</div><div class="value" id="completed">0 / 15</div></div>
+</div>
+<progress id="batch-progress" max="1" value="0" aria-label="Current epoch phase progress"></progress>
+<div class="split muted"><p id="batches">Initializing</p><p id="eta"></p></div>
+<div class="split muted"><span id="gpu">GPU information pending</span><span id="updated"></span></div>
+<p id="best" class="muted"></p><div id="error" role="alert"></div>
+</section>
+<div class="charts">
+<section class="card"><h2>Training and validation BCE</h2><svg id="loss-chart" viewBox="0 0 600 215" role="img" aria-label="BCE loss by completed epoch"></svg><div class="legend"><span><i class="dot train"></i>Train</span><span><i class="dot val"></i>Validation</span></div></section>
+<section class="card"><h2>Training and validation accuracy</h2><svg id="accuracy-chart" viewBox="0 0 600 215" role="img" aria-label="Accuracy by completed epoch"></svg><div class="legend"><span><i class="dot train"></i>Train</span><span><i class="dot val"></i>Validation</span></div></section>
+</div>
+<section class="card"><div class="split"><h2>Full comparison queue</h2><span class="muted">Test metrics appear after validation-selected evaluation</span></div><div class="table-scroll"><table><thead><tr><th>Dataset</th><th>Model</th><th>Seed</th><th>Process</th><th>Completed epochs</th><th>Test accuracy</th><th>ROC-AUC</th></tr></thead><tbody id="jobs"></tbody></table></div></section>
+<section class="card"><details open><summary>Live process log</summary><pre id="log">Waiting for the first process.</pre></details></section>
+<footer id="location"></footer>
+</main>
+<script>
+const el=id=>document.getElementById(id);
+const valid=v=>v!==null&&v!==undefined&&Number.isFinite(Number(v));
+const fixed=(v,n=4)=>valid(v)?Number(v).toFixed(n):'—';
+const percent=v=>valid(v)?(100*Number(v)).toFixed(2)+'%':'—';
+const duration=v=>!valid(v)?'':Number(v)<60?Math.ceil(v)+'s':Number(v)<3600?Math.ceil(v/60)+'m':(v/3600).toFixed(1)+'h';
+const friendly={fixed_filter_cnn:'Fixed-filter CNN',learned_filter_cnn:'Learned-filter CNN',dual_cnn_128:'Original gradient CNN',fixed_filter_kcnet:'Frozen CNN + KC head',finetuned_cnn_kcnet:'Fine-tuned CNN + KC head'};
+const svgns='http://www.w3.org/2000/svg';
+function svgNode(tag,attributes,text){const node=document.createElementNS(svgns,tag);for(const [key,value] of Object.entries(attributes))node.setAttribute(key,value);if(text!==undefined)node.textContent=text;return node;}
+function chart(id,history,keys,isAccuracy){const svg=el(id);svg.replaceChildren();const left=50,right=580,top=12,bottom=178;
+if(!history.length){svg.append(svgNode('text',{x:300,y:95,'text-anchor':'middle',fill:'var(--muted)','font-size':13},'Curves appear after the first completed epoch'));return;}
+const rows=history.filter(r=>valid(r.epoch)&&keys.every(key=>valid(r[key])));if(!rows.length)return;
+const maxEpoch=Math.max(2,...rows.map(r=>Number(r.epoch)));const values=rows.flatMap(r=>keys.map(k=>Number(r[k])));
+const min=isAccuracy?0:Math.max(0,Math.min(...values)-.04);const max=isAccuracy?1:Math.max(min+.1,Math.max(...values)+.04);
+const x=e=>left+(Number(e)-1)/(maxEpoch-1)*(right-left);const y=v=>bottom-(Number(v)-min)/(max-min)*(bottom-top);
+for(let i=0;i<=4;i++){const v=min+(max-min)*i/4,yy=y(v);svg.append(svgNode('line',{x1:left,y1:yy,x2:right,y2:yy,stroke:'var(--line)','stroke-width':1}));svg.append(svgNode('text',{x:left-8,y:yy+4,'text-anchor':'end',fill:'var(--muted)','font-size':11},isAccuracy?Math.round(v*100)+'%':v.toFixed(2)));}
+for(const e of new Set([1,Math.round((maxEpoch+1)/2),maxEpoch]))svg.append(svgNode('text',{x:x(e),y:bottom+20,'text-anchor':'middle',fill:'var(--muted)','font-size':11},e));
+svg.append(svgNode('text',{x:(left+right)/2,y:211,'text-anchor':'middle',fill:'var(--muted)','font-size':11},'Completed epoch'));
+keys.forEach((key,index)=>{const color=index?'var(--val)':'var(--train)';svg.append(svgNode('polyline',{points:rows.map(r=>x(r.epoch)+','+y(r[key])).join(' '),fill:'none',stroke:color,'stroke-width':2}));for(const r of rows){const point=svgNode('circle',{cx:x(r.epoch),cy:y(r[key]),r:2.5,fill:color});point.append(svgNode('title',{},'Epoch '+r.epoch+': '+key+' = '+fixed(r[key])));svg.append(point);}});}
+function render(data){const jobs=data.jobs||[],active=jobs.find(job=>job.id===data.active_job),p=data.progress||{},done=jobs.filter(job=>job.status==='completed').length;
+el('status').textContent=data.status==='running'?(data.child_alive?'Running':'Between stages'):data.status;
+el('scope').textContent='Full datasets: '+(data.settings.datasets||[]).join(', ')+' · seeds '+data.settings.seeds.join(', ')+' · maximum '+data.settings.epochs+' epochs · patience '+data.settings.patience;
+el('active').textContent=active?active.dataset+' · '+(friendly[active.model]||active.model):data.status==='completed'?'All full-dataset runs completed':'Preparing the training queue';
+el('phase').textContent=active&&active.status==='evaluating'?'Evaluating best validation checkpoint on held-out test':(p.phase||data.status).replaceAll('_',' ');
+el('process').textContent=active&&data.child_alive?'Python PID '+active.pid+' · active':'Manager PID '+data.manager_pid;
+el('epoch').textContent=p.epoch!==undefined?p.epoch+' / '+data.settings.epochs:'— / '+data.settings.epochs;
+el('loss').textContent=fixed(p.current_loss);el('accuracy').textContent=percent(p.current_accuracy);el('completed').textContent=done+' / '+jobs.length;
+el('batch-progress').max=p.batches||1;el('batch-progress').value=p.batch||0;
+el('batches').textContent=p.batches?'Batch '+p.batch+' / '+p.batches+' · '+(p.samples||0).toLocaleString()+' images':'Initializing dataset / model';
+el('eta').textContent=p.phase_eta_seconds!==undefined?'Phase remaining ≈ '+duration(p.phase_eta_seconds)+(valid(p.samples_per_second)?' · '+fixed(p.samples_per_second,0)+' images/s':''):'';
+el('best').textContent=p.best_epoch?'Best validation BCE '+fixed(p.best_val_loss)+' at epoch '+p.best_epoch+' · patience '+p.bad_epochs+' / '+p.patience:'';
+const gpu=data.gpu;el('gpu').textContent=gpu?'GPU '+gpu.utilization+'% · VRAM '+(gpu.memory_used_mib/1024).toFixed(1)+' / '+(gpu.memory_total_mib/1024).toFixed(1)+' GiB':data.environment?.gpu||'GPU information unavailable';
+el('updated').textContent='Updated '+new Date(data.server_utc).toLocaleTimeString('en-GB',{timeZone:'Asia/Bangkok'})+' · Bangkok (UTC+7)';
+el('error').textContent=data.error||'';el('location').textContent='Outputs: '+data.batch_dir+' · refreshes every 2 seconds';
+el('jobs').replaceChildren();jobs.forEach(job=>{const row=document.createElement('tr');if(job.id===data.active_job)row.className='active';const summary=job.summary,metrics=job.metrics;const values=[job.dataset,friendly[job.model]||job.model,job.seed,job.status,summary?summary.completed_epochs+' / '+summary.requested_epochs+(summary.stopped_early?' (early stop)':''):'—',metrics?percent(metrics.accuracy):'—',metrics?fixed(metrics.roc_auc):'—'];values.forEach((value,index)=>{const cell=document.createElement('td');cell.textContent=value;if(index===3)cell.className=job.status;row.append(cell);});el('jobs').append(row);});
+chart('loss-chart',data.history||[],['train_loss','val_loss'],false);chart('accuracy-chart',data.history||[],['train_accuracy','val_accuracy'],true);
+const log=el('log');const atBottom=log.scrollTop+log.clientHeight>=log.scrollHeight-30;log.textContent=data.log_tail||'Waiting for the first process.';if(atBottom)log.scrollTop=log.scrollHeight;}
+async function refresh(){try{const response=await fetch('/api/status',{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);render(await response.json());}catch(error){el('status').textContent='Disconnected';el('error').textContent='Cannot reach the training manager. Verify its process before assuming training is active. '+error.message;}finally{setTimeout(refresh,2000);}}
+refresh();
+</script></body></html>

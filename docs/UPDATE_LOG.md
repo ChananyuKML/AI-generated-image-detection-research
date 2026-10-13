@@ -194,3 +194,39 @@ git push origin main
 ```
 
 Only the final command publishes. The preparation itself does not push to GitHub.
+
+## 2026-10-13 — Full-only comparison with live progress on RTX 5060 Ti
+
+The owner requested full training with progress visible during training and
+explicitly excluded POC dataset experiments. Prepared a 15-run queue: all five
+supported models on the full `progan`, `tiny_genimage`, and `cifake` splits, seed 42.
+Settings are 224px, AdamW at 1e-4, batch 32, workers 4, full precision, a 100-epoch
+maximum and validation-BCE patience 10/min_delta 0. KC projection seed is 42;
+each KC variant starts from that dataset's same validation-selected fixed encoder.
+
+- Added `aig/progress.py` and observational batch reporting to the existing trainer.
+  It writes phase/batch/loss/accuracy, throughput, phase ETA and completed-epoch
+  telemetry without changing model weights, optimizer behavior, or RNG state.
+- Added `tools/run_full_training.py`: full-only inventory/signature verification,
+  source/package snapshots, encoder dependency ordering, completed-run reuse,
+  checkpoint recovery, stopping-boundary recovery, manager lock, and automatic
+  held-out evaluation/result CSV. Windows sleep inhibition is requested while active.
+- Added a local live dashboard showing actual child-process liveness/PID, queue,
+  current batch, completed-epoch curves, GPU/VRAM, logs, and completed test metrics.
+  It binds to 127.0.0.1 and reports disconnection rather than treating saved status
+  as proof of an active process. Phase ETA is not a whole-queue completion forecast.
+- All **35 unit tests** passed, including CUDA checks and new scheduling, recovery,
+  process-observation, and telemetry weight/RNG-equivalence checks. The CPU
+  learned-filter workflow also passed train/resume/evaluate, exact epoch-boundary
+  equivalence, and the existing early-stopping recovery/guard checks.
+- Verified the actual full image inventories against CSV/JSON manifests:
+  ProGAN 8,000 images; Tiny GenImage 34,998; CIFAKE 117,328. No POC splits are queued.
+- Python syntax, dashboard JavaScript syntax, and Git whitespace checks passed.
+- This PC is Windows/Python 3.13.5, torch 2.9.1+cu128, NVIDIA RTX 5060 Ti with
+  16 GiB VRAM. CUDA allocation succeeded. This is a new local comparison;
+  historical results in earlier entries belong to the other execution machine.
+
+Preparation verified at **10:53:50 Asia/Bangkok (UTC+7)**. Training has not yet
+started at this preparation snapshot. Intended local output is
+`runs/full_comparison_20261013/`, with its live view at http://127.0.0.1:8765/.
+Source/script changes are local; the owner still handles GitHub publishing.

@@ -19,6 +19,7 @@ from .experiment import (ROOT, MODELS, KC_MODELS, BinaryImages, atomic_save, bui
                          select_device, training_data_signature, write_json)
 from networks.kcnet import KCNET_DEFAULTS
 from .early_stopping import EarlyStopping
+from .progress import TrainingProgress
 
 KC_ARGUMENTS = {"pool_size": "kc_pool_size", "kc_units": "kc_units", "fan_in": "kc_fan_in",
                 "projection_seed": "projection_seed", "feature_eps": "kc_feature_eps"}
@@ -55,11 +56,13 @@ def resolve_model_config(args, saved_config=None):
     return dict(KCNET_DEFAULTS, **supplied)
 
 
-def run_epoch(model, loader, criterion, device, optimizer=None):
+def run_epoch(model, loader, criterion, device, optimizer=None, progress=None):
     model.train(optimizer is not None)
     loss_sum, correct, total = 0.0, 0, 0
+    if progress is not None:
+        progress.start_phase("training" if optimizer is not None else "validation", len(loader))
     with torch.set_grad_enabled(optimizer is not None):
-        for inputs, labels in loader:
+        for batch, (inputs, labels) in enumerate(loader, 1):
             inputs = inputs.to(device, non_blocking=True)
             labels = labels.to(device, non_blocking=True).float().unsqueeze(1)
             if optimizer is not None:
@@ -75,6 +78,9 @@ def run_epoch(model, loader, criterion, device, optimizer=None):
             loss_sum += loss.item() * len(inputs)
             correct += int(((logits > 0) == labels.bool()).sum().item())
             total += len(inputs)
+            if progress is not None:
+                progress.batch("training" if optimizer is not None else "validation",
+                               batch, len(loader), total, loss_sum / total, correct / total)
     return loss_sum / total, correct / total
 
 
@@ -239,10 +245,12 @@ def main(argv=None):
     write_json(run_dir / "environment.json", environment)
     print(f"Results: {run_dir}", flush=True)
     completed_epochs, stopped_early = start_epoch, False
+    progress = TrainingProgress(run_dir, args.model, args.dataset, args.seed, args.epochs, start_epoch)
     for epoch in range(start_epoch + 1, args.epochs + 1):
         started = time.monotonic()
-        train_loss, train_acc = run_epoch(model, loaders["train"], criterion, device, optimizer)
-        val_loss, val_acc = run_epoch(model, loaders["val"], criterion, device)
+        progress.start_epoch(epoch)
+        train_loss, train_acc = run_epoch(model, loaders["train"], criterion, device, optimizer, progress)
+        val_loss, val_acc = run_epoch(model, loaders["val"], criterion, device, progress=progress)
         row = {"epoch": epoch, "train_loss": train_loss, "train_accuracy": train_acc,
                "val_loss": val_loss, "val_accuracy": val_acc, "seconds": time.monotonic() - started}
         history.append(row)
@@ -256,6 +264,7 @@ def main(argv=None):
                       "best_val_loss": best_loss, "best_epoch": best_epoch,
                       "config": config, "history": history, "rng": rng_state(generator),
                       "early_stopping_state": monitor.state_dict()}
+        progress.emit(force=True, phase="saving_checkpoint")
         if improved:
             atomic_save(checkpoint, run_dir / "best.pt")
         atomic_save(checkpoint, run_dir / "last.pt")
@@ -263,6 +272,7 @@ def main(argv=None):
             writer = csv.DictWriter(handle, fieldnames=list(row))
             writer.writeheader()
             writer.writerows(history)
+        progress.finish_epoch(row, best_epoch, best_loss, monitor.bad_epochs, monitor.patience)
         print(f"Epoch {epoch}/{args.epochs} | train BCE={train_loss:.5f}, acc={train_acc:.4f} | "
               f"val BCE={val_loss:.5f}, acc={val_acc:.4f} | {row['seconds']:.1f}s" +
               (" | saved best.pt" if improved else "") +
@@ -277,5 +287,6 @@ def main(argv=None):
                "stop_reason": "early_stopping" if stopped_early else "epoch_target",
                "early_stopping_state": monitor.state_dict(),
                "best_epoch": best_epoch, "best_val_loss": best_loss, "config": config})
+    progress.finish(completed_epochs, stopped_early)
     print(f"Training complete after {completed_epochs}/{args.epochs} epochs. Best validation epoch: {best_epoch}. "
           f"Evaluate {run_dir / 'best.pt'} on the test split.", flush=True)

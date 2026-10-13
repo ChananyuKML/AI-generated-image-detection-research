@@ -7,8 +7,28 @@ followed by the original three-block CNN and 128/64/1 classifier.
 
 This project provides a portable Windows/Linux workflow for environment setup,
 dataset download/preparation, training, checkpoint resume, and held-out evaluation.
-The default experiment uses ProGAN POC, 20 epochs, AdamW, learning rate 1e-4,
-batch size 32, input size 224, and seed 42. These are pilot defaults.
+The current comparison uses the full prepared ProGAN, Tiny GenImage, and CIFAKE
+datasets with all five supported models. The full queue uses AdamW at 1e-4,
+batch size 32, 224px input, seed 42, a 100-epoch maximum, and validation patience 10.
+
+## Full training with live progress
+
+```powershell
+# Windows: after environment setup and dataset preparation
+.\.venv\Scripts\python.exe tools/run_full_training.py
+```
+
+```sh
+# Linux
+.venv/bin/python tools/run_full_training.py
+```
+
+Open **http://127.0.0.1:8765/** to see the actual process, batch progress, epoch
+loss/accuracy curves, queue, GPU usage, logs, and completed test metrics. This runs
+15 full-dataset training stages and reuses each dataset's fixed-filter encoder for
+both KC variants. See [FULL_TRAINING](docs/FULL_TRAINING.md) for setup, recovery,
+and background-launch instructions. POC commands below are historical quick-start
+examples; they are not used by the full comparison queue.
 
 ## Start on another PC
 
