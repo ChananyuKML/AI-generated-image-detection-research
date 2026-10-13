@@ -1,9 +1,13 @@
 """Cross-generator split integrity, queue coverage, and macro-mean definitions."""
 
 import unittest
+import tempfile
+from pathlib import Path
+from argparse import Namespace
 
 from aig.genimage_protocol import GENERATORS, DATASETS, assign_protocol_splits, audit_cross_generator_splits, matrix_summary
-from tools.run_full_training import make_jobs
+from tools.run_full_training import MODELS, TrainingQueue, make_jobs
+from aig.experiment import ROOT
 
 
 def record(identity, generator='sdv5', label=1, split='train'):
@@ -52,6 +56,24 @@ class GenImageProtocolTests(unittest.TestCase):
         for dataset in DATASETS:
             models = [job['model'] for job in tiny if job['dataset'] == dataset]
             self.assertEqual(models[0], 'fixed_filter_cnn')
+
+    def test_explicit_replan_preserves_old_schedule_and_training_settings(self):
+        temporary_root = (ROOT / 'runs' / 'queue_tests').resolve()
+        self.assertTrue(temporary_root.is_relative_to(ROOT / 'runs'))
+        temporary_root.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=temporary_root) as directory:
+            args = Namespace(batch_dir=directory, datasets=['progan', 'tiny_genimage', 'cifake'],
+                             models=list(MODELS), seeds=[42], epochs=100, patience=10,
+                             batch_size=32, workers=4, port=8765, genimage_protocol='pooled',
+                             source_revision='source', replan=False)
+            old = TrainingQueue(args)
+            self.assertEqual(len(old.state['jobs']), 15)
+            old.lockfile.unlink()
+            args.genimage_protocol, args.source_revision, args.replan = 'cross-generator', 'source_protocol', True
+            updated = TrainingQueue(args)
+            self.assertEqual(len(updated.state['jobs']), 45)
+            self.assertTrue(list(Path(directory).glob('plan_before_replan_*.json')))
+            self.assertEqual(updated.plan['batch_size'], 32)
 
 
 if __name__ == '__main__':
