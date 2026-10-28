@@ -7,34 +7,62 @@ followed by the original three-block CNN and 128/64/1 classifier.
 
 This project provides a portable Windows/Linux workflow for environment setup,
 dataset download/preparation, training, checkpoint resume, and held-out evaluation.
-The current comparison uses full prepared ProGAN and CIFAKE, plus seven separate
-Tiny GenImage generator subsets with all five supported models. Tiny follows a
-7×7 train-generator/test-generator matrix. The full queue uses AdamW at 1e-4,
+The completed 14 October comparison used full prepared ProGAN plus seven separate
+Tiny GenImage generator subsets with all five supported models. CIFAKE was deferred on
+14 October 2026; its prepared files remain available for later. Tiny follows a
+7×7 train-generator/test-generator matrix. The active queue uses AdamW at 1e-4,
 batch size 32, 224px input, seed 42, a 100-epoch maximum, and validation patience 10.
 
 ## Full training with live progress
 
+**28 October 2026: switching to full GenImage.** Download all eight official
+generator archives, including SD1.4, with the new resumable downloader:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements/download.txt
+.\download_genimage.ps1 -Mode list
+# Replace E: with your actual larger data drive (about 611 GiB archives + reserve).
+.\download_genimage.ps1 -Mode download -Output 'E:\GenImage\archives'
+# If official Drive files are quota-limited, use the tested community mirror:
+.\download_genimage.ps1 -Mode download -Source huggingface -Output 'E:\GenImage\hf_archives'
+```
+
+See [full GenImage downloads](docs/FULL_GENIMAGE.md) for Linux commands, downloading
+one generator at a time, interrupted-download recovery and multipart archive checks.
+For a fresh checkout, follow [clone/pull and environment setup on another PC](docs/FULL_GENIMAGE.md#start-on-another-pc)
+before running the project Python commands above.
+The community mirror pins all 207 archive paths and published SHA-256 hashes;
+its compressed size is 608.33 GiB, excluding unrelated repository extras.
+This acquisition stage preserves completed Tiny results. Full-data preparation
+and eight-generator training integration are still pending; the commands below
+continue to describe the previous prepared ProGAN/Tiny comparison.
+
 ```powershell
 # Windows: after environment setup and dataset preparation
-.\.venv\Scripts\python.exe tools/run_full_training.py
+.\.venv\Scripts\python.exe tools/run_full_training.py --datasets progan tiny_genimage
 ```
 
 ```sh
 # Linux
-.venv/bin/python tools/run_full_training.py
+.venv/bin/python tools/run_full_training.py --datasets progan tiny_genimage
 ```
 
-First run `python scripts/run.py data --datasets progan tiny_genimage cifake` and
+First run `python scripts/run.py data --datasets progan tiny_genimage` and
 project Python on `tools/prepare_genimage_protocol.py` to create the held-out
 seven-generator protocol. See [GENIMAGE_TESTING](docs/GENIMAGE_TESTING.md).
 
 Open **http://127.0.0.1:8765/** to see the actual process, batch progress, epoch
 loss/accuracy curves, queue, GPU usage, logs, and completed test metrics. This runs
-45 training stages (35 Tiny generator detectors, 5 ProGAN, 5 CIFAKE) and reuses each
+40 training stages (35 Tiny generator detectors and 5 ProGAN) and reuses each
 source dataset's fixed-filter encoder for both KC variants. Tiny testing produces
 245 matrix cells, with macro and unseen-generator averages. See [FULL_TRAINING](docs/FULL_TRAINING.md) for setup, recovery,
 and background-launch instructions. POC commands below are historical quick-start
 examples; they are not used by the full comparison queue.
+
+The runner's general default includes all three sources (45 stages). Keep the
+explicit dataset list above for the current scope. To resume the existing batch
+with its source snapshot and unchanged settings, use the
+[current-batch recovery command](docs/FULL_TRAINING.md#current-batch-with-cifake-deferred).
 
 ## Start on another PC
 
@@ -95,6 +123,9 @@ The KC models require `--encoder-checkpoint` for a fresh run and embed the encod
 in their own checkpoints. The frozen variant trains its 4,097-parameter readout;
 the fine-tuned variant also trains the CNN. See
 [KC training and resume commands](docs/EXPERIMENTS.md#train-the-frozen-encoders-kc-head).
+
+For a detailed explanation, read [the KC architecture guide](docs/KCNET_EXPLAINED.md)
+and [the equations, worked examples and gradient flow](docs/KCNET_MATH_AND_EXAMPLES.md).
 
 ## Results and resume
 

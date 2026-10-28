@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from aig.io import atomic_write_json
 from aig.genimage_protocol import DATASETS as GENIMAGE_DATASETS, PREFIX as GENIMAGE_PREFIX, matrix_summary
+from aig.genimage_reporting import write_accuracy_tables
 DATASETS = ("progan", "tiny_genimage", "cifake")
 MODELS = ("fixed_filter_cnn", "learned_filter_cnn", "dual_cnn_128",
           "fixed_filter_kcnet", "finetuned_cnn_kcnet")
@@ -431,6 +432,11 @@ class TrainingQueue:
                 writer = csv.DictWriter(handle, fieldnames=fields, extrasaction='ignore')
                 writer.writeheader()
                 writer.writerows(cells)
+        if matrices:
+            try:
+                write_accuracy_tables(self.batch, {'matrices': matrices}, self.plan['models'], self.plan['seeds'])
+            except OSError as error:
+                print(f'Presentation export deferred: {error}; rerun tools/export_genimage_tables.py.', flush=True)
 
     def gpu(self):
         if time.monotonic() - self.gpu_updated > 8:

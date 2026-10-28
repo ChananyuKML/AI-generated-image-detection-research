@@ -55,6 +55,9 @@ validation BCE. Stopping state and policy survive resume. See
 
 ## KCNet-inspired head experiment
 
+Detailed companion documents: [architecture and presentation questions](KCNET_EXPLAINED.md)
+and [equations, worked examples and backpropagation](KCNET_MATH_AND_EXAMPLES.md).
+
 `fixed_filter_kcnet` is a separate head experiment. A fresh run copies only the
 frontend and three CNN blocks from validation-selected `fixed_filter_cnn/best.pt`.
 The original dense classifier is discarded. Both the copied encoder and its FFD

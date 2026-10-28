@@ -2,8 +2,38 @@
 
 Repository: **ChananyuKML/AI-generated-image-detection-research**. The project title
 is "AI-generated image detection research"; the GitHub repository name uses hyphens
-in place of spaces. This preparation does not create or publish a remote repository.
-The upload helper previews its actions unless passed `--push`.
+in place of spaces. The repository already exists. The upload helper previews its
+actions unless passed `--push`; historical first-publication instructions remain
+below for reference. Push when explicitly requested by the owner.
+
+## Current instructions: pull and download full GenImage
+
+The full eight-generator source downloader, provider catalogs, tests and usage
+instructions are in this repository. On another PC, follow
+[FULL_GENIMAGE: Start on another PC](FULL_GENIMAGE.md#start-on-another-pc)
+to clone or pull, create a local virtual environment and download using the
+tested community mirror. The official Google Drive source hit quota limits in
+the 28 October check. The mirror is pinned and its published hashes are verified.
+
+For an existing Windows checkout:
+
+```powershell
+git status --short
+git pull --ff-only
+# Create the venv only if this PC does not have one yet:
+# python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements/download.txt
+.\download_genimage.ps1 -Mode list -Source huggingface
+# Example: start one generator on your chosen data drive.
+.\download_genimage.ps1 -Mode download -Source huggingface -Output 'D:\GenImage\hf_archives' -Generators sdv4
+```
+
+All eight generators require 608.33 GiB of compressed mirror archives, plus the
+script's 10 GiB reserve and additional extraction space. Use a sufficiently large
+drive for the complete release. Full-data preparation and eight-generator
+training integration are still pending; current Tiny checkpoints are not full
+GenImage results. Models, datasets, local test downloads and experiment outputs
+remain outside Git and need a separate transfer if required.
 
 ## Create the empty GitHub repository
 
@@ -66,8 +96,8 @@ For later source updates on the current PC, first read [UPDATE_LOG.md](UPDATE_LO
 and review `git status --short` and `git diff`. Stage only the intended source,
 tests, small configuration, and documentation, then create a local commit.
 Run `python scripts/publish_github.py` to preview the destination and source-only
-checks. The owner performs the actual push with `git push origin main` or the
-helper's explicit `--push` option. Update-log results summarize local measurements;
+checks, then use `git push origin main` or the helper's explicit `--push` option
+when a push is requested. Update-log results summarize local measurements;
 the ignored datasets and complete run folders require a separate transfer.
 
 ```sh

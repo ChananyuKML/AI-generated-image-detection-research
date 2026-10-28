@@ -22,6 +22,19 @@
     "fake_source": "ProGAN",
     "protocol": "A custom stratified 70/15/15 pilot split from the released validation archive. This is not the original benchmark training protocol. The current downloaded release contains 8000 image entries; the paper describes 4000 validation images."
   },
+  "genimage": {
+    "publication": "GenImage: A Million-Scale Benchmark for Detecting AI-Generated Image, NeurIPS Datasets and Benchmarks, 2023",
+    "paper": "https://arxiv.org/abs/2306.08571",
+    "author_repository": "https://github.com/GenImage-Dataset/GenImage",
+    "official_drive_folder": "https://drive.google.com/drive/folders/1jGt10bwTbhEZuGXLyvrCuxOI0cBqQ1FS",
+    "download_catalog": "configs/genimage_downloads.json",
+    "optional_community_mirror": "https://huggingface.co/datasets/jzousz/GenImage",
+    "community_mirror_catalog": "configs/genimage_huggingface.json",
+    "community_mirror_verification": "Pinned revision, same 207 paths and byte sizes as the official Drive snapshot; downloaded SHA-256 checked against mirror metadata, not official publisher hashes.",
+    "download_script": "tools/download_genimage.py",
+    "fake_sources": ["Midjourney", "Stable Diffusion 1.4", "Stable Diffusion 1.5", "ADM", "GLIDE", "Wukong", "VQDM", "BigGAN"],
+    "protocol": "Source acquisition only as of 2026-10-28. Preserve supplied train/val roles; full-data preparation and eight-generator training/evaluation integration are pending. Do not substitute Tiny GenImage results."
+  },
   "tiny_genimage": {
     "publication": "Derived from GenImage: A Million-Scale Benchmark for Detecting AI-Generated Image, NeurIPS Datasets and Benchmarks, 2023",
     "paper": "https://arxiv.org/abs/2306.08571",

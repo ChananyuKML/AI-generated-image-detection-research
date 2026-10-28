@@ -1,0 +1,1044 @@
+{
+  "provider": "huggingface",
+  "repository": "jzousz/GenImage",
+  "revision": "71c983e6262684bc2c6b6af99582e8f568c259a5",
+  "is_official": false,
+  "verification": "All paths and byte sizes match the official Drive snapshot; hashes published by this community mirror, not official publisher.",
+  "files": [
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z01",
+      "bytes": 3221225472,
+      "sha256": "ad1703c57b1e10b6f8ec67d472fd9e7e5d958b1b7f8814e5ddec130022f6c1c9"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z02",
+      "bytes": 3221225472,
+      "sha256": "08a184eb07ea6b4c60a8bc790676d9c430c412958e5e6bde77b382ddcd0bbcef"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z03",
+      "bytes": 3221225472,
+      "sha256": "a8737bb80707ce28a7fdbaff601b43ca7e9bfd84c9216e0299e9864664508ac4"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z04",
+      "bytes": 3221225472,
+      "sha256": "580180a8b430c17c2d2552df068d672b565d684b886df81187942c9a225aa5db"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z05",
+      "bytes": 3221225472,
+      "sha256": "b8cd88dac86c9d41d90cfedd120c0d3f5c21f7151547387acba80bb78a46df9f"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z06",
+      "bytes": 3221225472,
+      "sha256": "30cc87607500e6f40e81f32037b936714aad019d28b96d2c9a7f2610336e7562"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z07",
+      "bytes": 3221225472,
+      "sha256": "83cf783e430e08cfdfda6a55ff359c24db06ef949bde975e46e97076cece4857"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z08",
+      "bytes": 3221225472,
+      "sha256": "a1bd9cdd77de099b6d840b2fc5be1e4d44d9ab759a2139e42b4109a4e48b8df5"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z09",
+      "bytes": 3221225472,
+      "sha256": "9c62162ca37596df05ab76f893ac4132739f8f043b27a80b4c0e1f590985f76a"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z10",
+      "bytes": 3221225472,
+      "sha256": "63da2132ceefefd02c52ddc27ad9f509e7d13de9449155a845d03f941395d569"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z11",
+      "bytes": 3221225472,
+      "sha256": "7a3389e0eb98778433d2098e78488e971ac25fef0caed43731c752135436c9f4"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z12",
+      "bytes": 3221225472,
+      "sha256": "f3363874825d9ea8866139bb017311b53c97a0f192270a8f180485f8867b81e5"
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.zip",
+      "bytes": 184678028,
+      "sha256": "2a6030c89645136b7e6d094ff3c358aad04688147f9a7143ffedcc6302a6b683"
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z01",
+      "bytes": 3221225472,
+      "sha256": "8d2112064f864907f748215155d9f9a693a98080644e2cf799abedc37c9cfeef"
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z02",
+      "bytes": 3221225472,
+      "sha256": "ce23050d37f2e34e799ba06bc33d3c3aecc6fbc992ac67699f3790f00dd1dcf6"
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z03",
+      "bytes": 3221225472,
+      "sha256": "91329f18f6378ef340d2ccfb6cad4527f5322fd9dedd7f673a239bb68410b6ab"
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z04",
+      "bytes": 3221225472,
+      "sha256": "fec64395632d8607d67eec8eabdca4d2339034585a899da6c5a6c4f6b34d7ca2"
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z05",
+      "bytes": 3221225472,
+      "sha256": "74220111e970845e9ae216232d23499768b544bb70dfcbb5efd62f9a9fff8a31"
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z06",
+      "bytes": 3221225472,
+      "sha256": "846b5b44e0615bbf41b3dcd83e137cbb21c02fbefde15588f699eeee338a9577"
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z07",
+      "bytes": 3221225472,
+      "sha256": "6b269ae6e12a12abd6ccbf3ba2f3c9d43e47d37f5ba84009e39414bcae303744"
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.zip",
+      "bytes": 1687358196,
+      "sha256": "1b877c00af60889ff93ca3c4b97ca715835dbf52b4d7de902b9940a224e6cdd9"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z01",
+      "bytes": 3221225472,
+      "sha256": "1328271dbc7af14a20d418ef39cd8767c3de061aeb496b5b88335be6487ac562"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z02",
+      "bytes": 3221225472,
+      "sha256": "be5d2de49494629997dd3d4f9f0fb29b1d043736cbd3c16a483adacffefe546a"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z03",
+      "bytes": 3221225472,
+      "sha256": "d05a1cc810000389b52f50be2239f7f63b481dd079cb7ec7a4775bde2a0450f0"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z04",
+      "bytes": 3221225472,
+      "sha256": "6c6e6a8cf28806a7302c1c7d8fd1a42a4739b890c87528acf518952288671741"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z05",
+      "bytes": 3221225472,
+      "sha256": "8a7f3cd57cb61bf7854175116c5ab80a91b6f3ae583b5a67417a68a4a12c931f"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z06",
+      "bytes": 3221225472,
+      "sha256": "6a19204d9a9e94ecdf29d639397f0e0004cc20a1a09d825dd6072dbb35597e9d"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z07",
+      "bytes": 3221225472,
+      "sha256": "e08007300e4baac58331de753ef570433a7f25646752466e85cb93a6fca25c7a"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z08",
+      "bytes": 3221225472,
+      "sha256": "ba69904fc3a395e45322d3748c7a038d20eaa2fbcee0e22407b334b86fafda03"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z09",
+      "bytes": 3221225472,
+      "sha256": "08223122d5d0b144cd35d1dc4c411b978caddcef0d657703bc2e8202955cc749"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z10",
+      "bytes": 3221225472,
+      "sha256": "2bb3c12abfdecebcfd85e23975924f831c42976e428c681f9c20b2ab951c3409"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z11",
+      "bytes": 3221225472,
+      "sha256": "f5bb506b910526fb338714f9b3261bf9b0216a4c667e2aadb2adbaecef5eb07c"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z12",
+      "bytes": 3221225472,
+      "sha256": "28c2bef17d8af373512829b2586659c30181a24ced347c674de211cc1baca21c"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z13",
+      "bytes": 3221225472,
+      "sha256": "db9b90130e8406a46f97961989617e1ab4d35f306b0f613c2e48563e7972fb31"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z14",
+      "bytes": 3221225472,
+      "sha256": "e03f009a5d79a8cc59eb9373ca297dcc368accdd2f201bf6d0b8b2fe858261c5"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z15",
+      "bytes": 3221225472,
+      "sha256": "ac4d2d3d9c91255e75bda374c60ee2ef53b0d10d9ed699bb9fbd641ec8287741"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z16",
+      "bytes": 3221225472,
+      "sha256": "1f3e5325360b5a07a88d6a4faeeaca86bb85586ea50959f39813e2880fa92574"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z17",
+      "bytes": 3221225472,
+      "sha256": "d8621d3c0002642ebf09f2ae4ef10324147a144e44dc92e458ddc7951c9baf5f"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z18",
+      "bytes": 3221225472,
+      "sha256": "582288efe8c0c682953eba182ffacc37ee2bf78219a939d98e967ab3bba021bc"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z19",
+      "bytes": 3221225472,
+      "sha256": "f3a9d3bc0bb1d4058b828cc92afb4be93bd14251c696ea3759ac237220fabb56"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z20",
+      "bytes": 3221225472,
+      "sha256": "ee2fbb4251e4ddef519f82d10cf5476f168a64ee7d0613aa31fad30d2ab3ce4b"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z21",
+      "bytes": 3221225472,
+      "sha256": "88da48ee545c21d52f5411ca7113b0c39724420c94744d99b27ac981c02e79fe"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z22",
+      "bytes": 3221225472,
+      "sha256": "92ed6c643b643a3b2594a4c624b79fda433f5115099af80f4abcf58ddeac2f9f"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z23",
+      "bytes": 3221225472,
+      "sha256": "78cddf4a38220def48ced35259989f5cc2fd5ff7b5898e5fd93129c81fdd38fb"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z24",
+      "bytes": 3221225472,
+      "sha256": "20595aca6aecad97a0769253ecb09dea22e7590fbc404ff729ef69da2cf11f9b"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z25",
+      "bytes": 3221225472,
+      "sha256": "1eea7545dc1f40131cb34c01ed22865500553f8f58f1d42ad581a903b36af03b"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z26",
+      "bytes": 3221225472,
+      "sha256": "fb368f57d4296ca83f2708b8a827c556c72607a8d1fae7b04157e3e571736c55"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z27",
+      "bytes": 3221225472,
+      "sha256": "208a9167aba906893bda63247db967bfe1efc39b5359d1574c3f4ebad175b309"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z28",
+      "bytes": 3221225472,
+      "sha256": "98b7e9b3a2b6b9b7ea384e05744169b3ba1a40d8ac6d13d76992c8cec27f6748"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z29",
+      "bytes": 3221225472,
+      "sha256": "d3fb6abb3472fee1d3944c897db1fb4f64a07b72bada540c18c2a3660993fb31"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z30",
+      "bytes": 3221225472,
+      "sha256": "3c8fd023f4691adcf09970e4412bed19748b426c21606a5cca4d1461d31b367e"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z31",
+      "bytes": 3221225472,
+      "sha256": "3aa7f564bf47a14fe01ed2bc69a071982253c2ed3f07600b192c2a4aa59f4fe2"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z32",
+      "bytes": 3221225472,
+      "sha256": "1166bdc1e53e5ae5515444cf84fd20e20dbe37f83d97428c7574995fa3b1f5c1"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z33",
+      "bytes": 3221225472,
+      "sha256": "db1cca6f7471a17aad2c18bed9e2d97b839b03e30e0e1109dfc7aae11955a3d4"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z34",
+      "bytes": 3221225472,
+      "sha256": "565f285de0b9c80a8b292250866017a3a958d40b94ce6b50c2a44bd7c64a525f"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z35",
+      "bytes": 3221225472,
+      "sha256": "f512360e505f5e2226570cb5f0d3ac178c61d6e7c5cafec4dc5c7b71698628a1"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z36",
+      "bytes": 3221225472,
+      "sha256": "bd785abbfc35ca8928ca5ed24d21d895910bf95d0eeacb8c97992d21f7de8ef6"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z37",
+      "bytes": 3221225472,
+      "sha256": "719920d46bab4dd3b8ba73cdca56734d5a5d467eb6516080cdca96f9abb0609f"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z38",
+      "bytes": 3221225472,
+      "sha256": "aace7cf25e635145b023379fc7e8e754dc35792173c30bf8cfebe7284a856db2"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z39",
+      "bytes": 3221225472,
+      "sha256": "056341cec1cd0cf8543a9a6da1c34d6015b7d4208322feb463dca05ba01fe0ae"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z40",
+      "bytes": 3221225472,
+      "sha256": "5110b05b50ec621521f8bee029ce7a001fb256650486953f9aa7f3fd63f61fb4"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z41",
+      "bytes": 3221225472,
+      "sha256": "1614ed13ac9c7c1d4dfd4f6f26846c94a058b5f77fb22377085527a107a21105"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z42",
+      "bytes": 3221225472,
+      "sha256": "cf94842b9e9de2b6d91d64111a93b883a3623f607e9203f28f7a82b94e1e4dfb"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z43",
+      "bytes": 3221225472,
+      "sha256": "d1ca3a74482a309fedb142660008b90a7760ff7919e411ce31f842ad0aa3883c"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z44",
+      "bytes": 3221225472,
+      "sha256": "1e1c1f44134847ea1552dbad1c3d09083a4c310f460bbbf9c21116591c863740"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z45",
+      "bytes": 3221225472,
+      "sha256": "1e39c957d0746c50ed430a27870606c07225e3e0c8a06151cffa24a0a0ecdb67"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z46",
+      "bytes": 3221225472,
+      "sha256": "0f9b5c4dcff6d82cccf7bcdee0271aa554f92f42eeb07ed757a0482a8dc99a75"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z47",
+      "bytes": 3221225472,
+      "sha256": "cfc5e6301fdf4da054d0b6600029b0f7adc3a9bb05112b6efa650b98f4c87418"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z48",
+      "bytes": 3221225472,
+      "sha256": "960ac769d94a4abfbf2237ab1ea7c5f45b76004503329958ccf48c288ca8f939"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z49",
+      "bytes": 3221225472,
+      "sha256": "565c57a8eeea381ad472088799908afd72966bc5fe1d6b8f4d89359dccee1bf2"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z50",
+      "bytes": 3221225472,
+      "sha256": "b27cf40b15f12dba47e45c48d58e34074780e8403e721bc4f1de01394c3db2ef"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z51",
+      "bytes": 3221225472,
+      "sha256": "c4b1f666b0f1cc10f0682ebce11aef255498bd03bcad3a4283dd8eea2128d849"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z52",
+      "bytes": 3221225472,
+      "sha256": "d6f309dabad5e44889e749cdb9805bc73d312d37a1ad620983de489db0418408"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z53",
+      "bytes": 3221225472,
+      "sha256": "ca9e99de9a053afc6bc485045574f4c2509b72352ae1cd215fc472b2f48a6d45"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z54",
+      "bytes": 3221225472,
+      "sha256": "6c20a8b1df18695c5869e8e904244a676d76bd2377f61eea919f2ab5849423b7"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z55",
+      "bytes": 3221225472,
+      "sha256": "4b5b1d38aa4cfa01e132a5d92d06934465127de8a6d413bc7ff7338d891ad76b"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z56",
+      "bytes": 3221225472,
+      "sha256": "6234c401ba0bab0455d2275658671489a28f342531c510f14dc5221fe86794d1"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z57",
+      "bytes": 3221225472,
+      "sha256": "a6a8d4d022f9becab011d51104704764ca5bf2af4ef3636073aad8e6c0da1e57"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z58",
+      "bytes": 3221225472,
+      "sha256": "5b7744ba282b094d175b718bd3d02c8df4438071bdcfa0595713a6c0796cc27f"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z59",
+      "bytes": 3221225472,
+      "sha256": "3b124b12e125b0919c845d68acd4e36280822531acd702f5028de46d79051605"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z60",
+      "bytes": 3221225472,
+      "sha256": "cca8d2eae706452abae73f4bd916ab2648c61e5b2c2bc560bc51ad1745c256ba"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z61",
+      "bytes": 3221225472,
+      "sha256": "9babcf20a33febcdd06754ab64876572c6a6094e5be13586e0a35696f381cfb1"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z62",
+      "bytes": 3221225472,
+      "sha256": "d8ba5abb87f8128e973af4d582f9c04dbea5f4617478dfba44016852643bb3be"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z63",
+      "bytes": 3221225472,
+      "sha256": "e72897c71b456c56bff28e86cbec7ba1822e458c2825d2f66f2abbd489841879"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z64",
+      "bytes": 3221225472,
+      "sha256": "d867204a606ea8fff4272020d655f0b152455aebb2a64befcae4a6d2e393c315"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z65",
+      "bytes": 3221225472,
+      "sha256": "5a930a9dac71b1ae0dabb6b75c6e954be6bf32f3f70dd81757ef585df3a5de23"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z66",
+      "bytes": 3221225472,
+      "sha256": "b497c1cd192be2d661ebed6c303dd6b975c43db8576d04e426de31d7f27c90b5"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z67",
+      "bytes": 3221225472,
+      "sha256": "e31b2046c675c92500ade14cee2ea688253110252199ebbbeb9fd9d20b39d3ad"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z68",
+      "bytes": 3221225472,
+      "sha256": "d17b05580f98ba8911335c0650ef495242f8a92b2fb37a67809a2650d7f69cbb"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z69",
+      "bytes": 3221225472,
+      "sha256": "ff8f40cd81d549ebd4788637bdd2ddd60eea74b5137436babcdd5951c98a9a3f"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z70",
+      "bytes": 3221225472,
+      "sha256": "d3f33c58f7cefbe5096ee3a56c889210a9569cd27d855ff30766d65fe2972b4b"
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.zip",
+      "bytes": 1983433670,
+      "sha256": "02ebeb913bb05caec52d29eaad3a8a8e56a4defd7d7d0b1f9208fb1a0efa55cf"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z01",
+      "bytes": 3221225472,
+      "sha256": "a81929752acf2ccbe6704ccfa0538b6a967ac7d85c32096021aa717aac1228ad"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z02",
+      "bytes": 3221225472,
+      "sha256": "0b9659fc99b9813b68642cde2d7fec835b2cad1c666b3966c42e70f86d46e187"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z03",
+      "bytes": 3221225472,
+      "sha256": "66f991ee0151ba59b3c1d946c5839074115a8df672eda86af1460a428cfb2a3b"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z04",
+      "bytes": 3221225472,
+      "sha256": "1cb762c0666c4c9ec3c4fd01ae5b6618a2ebbc7b2be9b2528ec9afc5447b7378"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z05",
+      "bytes": 3221225472,
+      "sha256": "fe1fee36fc6e973d3aa3d52a7eb8913facaed8047aab884c4c6d9b1a536c745b"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z06",
+      "bytes": 3221225472,
+      "sha256": "31d7d811609430cd6ae63b2a5cf66148ecf5869f9e6d539c3cdf40dbcc9e053c"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z07",
+      "bytes": 3221225472,
+      "sha256": "e3de9c7743b4794a1186a8311c8e26f4e5816fc9102490415c87a251f08fa642"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z08",
+      "bytes": 3221225472,
+      "sha256": "ee77f5278a4cf21a4daa2ba3079e9aa09f451b1ff8a240dd12c1ff95b5bc1fb7"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z09",
+      "bytes": 3221225472,
+      "sha256": "b45946019150ad6c54e3b6b5855bd98a9d2fdc6c9eed405c41f4a57a715d94f2"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z10",
+      "bytes": 3221225472,
+      "sha256": "324a2d9f2f3e24513cd293107d324b1b9dc62e149c61dc7867a5f8fd67d209bc"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z11",
+      "bytes": 3221225472,
+      "sha256": "84f9c689fb5592e6a7556527f25603ed86eff72c756da252896da38a533922c9"
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.zip",
+      "bytes": 2771366344,
+      "sha256": "4c61aa5b1a03a2846e61f211a026303457fad9b89fabbf863666ecb819c0e707"
+    },
+    {
+      "path": "glide/imagenet_glide.z01",
+      "bytes": 3221225472,
+      "sha256": "2dbb47f2fc95d14b7ac598381e4e871c996ffa4fde8fc08c2e5c338d41b7f159"
+    },
+    {
+      "path": "glide/imagenet_glide.z02",
+      "bytes": 3221225472,
+      "sha256": "02d6df51cfa194402343cb2864888c0f399eeca20291b3e4226ff30303070bf4"
+    },
+    {
+      "path": "glide/imagenet_glide.z03",
+      "bytes": 3221225472,
+      "sha256": "b66f8132796b65778866b124e6605c197bb5d86396574e7e259c3eb22976d0e2"
+    },
+    {
+      "path": "glide/imagenet_glide.z04",
+      "bytes": 3221225472,
+      "sha256": "8cbafcd28a0a9e38bf57a170e7dee31fc7107ceaced34f2d1d71dd14a33c446f"
+    },
+    {
+      "path": "glide/imagenet_glide.z05",
+      "bytes": 3221225472,
+      "sha256": "33b569f6ccb402e3d9e31bee13b8cf2ac162947231d906a8fe98cdeb4e1f35db"
+    },
+    {
+      "path": "glide/imagenet_glide.z06",
+      "bytes": 3221225472,
+      "sha256": "e12fe879a984bb6ca74a7f80c0e7834066fd50661645340c8c2b480062b9d271"
+    },
+    {
+      "path": "glide/imagenet_glide.z07",
+      "bytes": 3221225472,
+      "sha256": "5f469a3e0584b4e10de3af8835e6ae337ec157ae32a452260a0ddd5a8e31eebf"
+    },
+    {
+      "path": "glide/imagenet_glide.z08",
+      "bytes": 3221225472,
+      "sha256": "b38754ea4c3fb07e001c2c364919369a934d0675a7363bf21e31e0894045fbfc"
+    },
+    {
+      "path": "glide/imagenet_glide.z09",
+      "bytes": 3221225472,
+      "sha256": "b45d8a5f073da7478d1088a74517e107dac4699794143649f37f9df10cabb041"
+    },
+    {
+      "path": "glide/imagenet_glide.z10",
+      "bytes": 3221225472,
+      "sha256": "5dc69986f56b761cad2a491ddb53a792b9a7aa946e3effcd776b85fdeddbfe84"
+    },
+    {
+      "path": "glide/imagenet_glide.zip",
+      "bytes": 51607857,
+      "sha256": "820d04b9be89581c25e7a61debb400c9bb3aed3925d5dd281d59c7d326b3dff2"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z01",
+      "bytes": 3221225472,
+      "sha256": "69889729a6d2fbd07ec64310dec1e9e46ae3067ae7696fcf0e1f08fb36ddfc8d"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z02",
+      "bytes": 3221225472,
+      "sha256": "24766b3d2ec2c20aa49d6b34ebca56d6783838c763f8cb5fa679e0a870da4b7d"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z03",
+      "bytes": 3221225472,
+      "sha256": "be30f7dca25a87404f58efc3f3594a8b00c500ef223eedc09748bfe69bc1b338"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z04",
+      "bytes": 3221225472,
+      "sha256": "ecf34baddae6a28cc71e8a54e21880245a78c9489774570e29a3c08cc45a85e1"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z05",
+      "bytes": 3221225472,
+      "sha256": "af8b6144bfea025e200e845672afa1ee5a52fda9291297131518331cd0d22fb5"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z06",
+      "bytes": 3221225472,
+      "sha256": "ad9495dd1bde4e7fac606c1fe21139485f105d25771eff6421c10babc9b8e7ac"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z07",
+      "bytes": 3221225472,
+      "sha256": "88492af0924e8194318e877155950897867a4cd354ea10f4ba4ecabc1518116b"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z08",
+      "bytes": 3221225472,
+      "sha256": "be2ade177adeac41ad9c82e8ac1158a58e364b8dcf4cf8659dbc4e2c1858a53c"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z09",
+      "bytes": 3221225472,
+      "sha256": "8653d0f3a0ba45364617ab753252541f03311ce422b288080c024c6cef9ae0b5"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z10",
+      "bytes": 3221225472,
+      "sha256": "853c0665d084245a1487b7eb6cabcec0ab625fd547d7eb89dea8a03ac3e22aa0"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z11",
+      "bytes": 3221225472,
+      "sha256": "06e8c5783fed4a465313a0b420a1716a267100f7dd997ce278276d515a9cfb5f"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z12",
+      "bytes": 3221225472,
+      "sha256": "12b13f1b9ad960e3e2790415b05787133cd68de08892b56db595737eba9901fa"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z13",
+      "bytes": 3221225472,
+      "sha256": "9fab0ac981d9adab09a1428c85f083efe4464771f751c6e3c061a09d504272de"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z14",
+      "bytes": 3221225472,
+      "sha256": "cf4f1d24c94e33c12ccb70fdbe0df54ab33267bf95f694806d26e7e708ed747f"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z15",
+      "bytes": 3221225472,
+      "sha256": "0db46fa62f9bc9a068722c49b84b1aa2059149669819cb58f7e94f5b50fd455e"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z16",
+      "bytes": 3221225472,
+      "sha256": "06aa8925c66a1fe190d198450def3c63c5840b58ebcd587958bd77e6a0d10e79"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z17",
+      "bytes": 3221225472,
+      "sha256": "03021981386cffea12215cc8df954a6df721f86edc0b5c6226b1fe603ad7bcac"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z18",
+      "bytes": 3221225472,
+      "sha256": "2f9a65d26cdf1d050015d52bedb17710e9c26328ffd47ee8a38f45baaf45db1e"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z19",
+      "bytes": 3221225472,
+      "sha256": "34744d6664c5c0fecc9302f84d449ebe11776860ca0c9f8b87735e5b57ab43bb"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z20",
+      "bytes": 3221225472,
+      "sha256": "befbf54691d9c1d9ccb682df0aaf8a1730df59a1596c3b7b933073243caf96f8"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z21",
+      "bytes": 3221225472,
+      "sha256": "e4e724f8474fb660a64a0a01ba14fff9bea3323db8020c3a79f781df76a3ae36"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z22",
+      "bytes": 3221225472,
+      "sha256": "d260b342ff527c250f8e7ab2bd2a2f7fde662bb133806797e1cffbbd5e34c96f"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z23",
+      "bytes": 3221225472,
+      "sha256": "f882965f7ff93374bab60081981805fb1dfe0f50290bd4a373d551fbfbdb90b7"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z24",
+      "bytes": 3221225472,
+      "sha256": "b32e8e420a50de882322e16a5e030bd4c44183ab2515687989f508e152f6e2d0"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z25",
+      "bytes": 3221225472,
+      "sha256": "c4e895a8db93d6cbb33f9781b2517399c0e68882b341633de5fa182390c7e141"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z26",
+      "bytes": 3221225472,
+      "sha256": "f0dc056f9ba9f9e3d2977c7ff71255ae44ab15389e76ac86759b1c32285110ab"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z27",
+      "bytes": 3221225472,
+      "sha256": "70f642fdb3109275d794e855f0a5479f7c3c769abb19f691e17f78b69abcccb4"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z28",
+      "bytes": 3221225472,
+      "sha256": "3eae2ce34c7a3e4d74b9e0f40ccdc8ff7116afb39f98aa186fa9d6388a590772"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z29",
+      "bytes": 3221225472,
+      "sha256": "f75776b15646efac1804eea367c65e1f6414c138e5b94e8ff6afcbdf2cbd36e9"
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.zip",
+      "bytes": 2997859082,
+      "sha256": "258879c50cd4d602f149e625e93dcadd319d727a1b2025d0770abc741f07d984"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z01",
+      "bytes": 3221225472,
+      "sha256": "8a57444c6fce5aa0bf6c79e2bfa2f275a4b706549f850fe766ce778439d60b8b"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z02",
+      "bytes": 3221225472,
+      "sha256": "1eb9a92083ae2877ca5ccd98609119f4affe347d0532c4736a17c7f858082a42"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z03",
+      "bytes": 3221225472,
+      "sha256": "087ff07b1dae5d3c75fbff5f2d69842a46531fcbfcc69db3dca115aacaf7841f"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z04",
+      "bytes": 3221225472,
+      "sha256": "fe640337abeb4d703a8eb64a380630b29e84767d654e4f8fec4d197ecabde5ca"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z05",
+      "bytes": 3221225472,
+      "sha256": "9da46d21640842fed496def9fc8022e8edc84a912c4b58109458154b786dfe48"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z06",
+      "bytes": 3221225472,
+      "sha256": "8e0d844aca9562136a5f8716870f6d36ad8ec920d89ef8bb04726ed0b0b73a8f"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z07",
+      "bytes": 3221225472,
+      "sha256": "42ed8c129595d596ad78886254958259dcb7b46d1481c93f96d9800a7b99c79f"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z08",
+      "bytes": 3221225472,
+      "sha256": "c13eb4bff477fe163726034f854be5d013c902f66768a6ddb0f559ce235218fe"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z09",
+      "bytes": 3221225472,
+      "sha256": "c555bcc1b4607f2b440632944518ea67fb2b4c88a0a21413c1b91cd27e8cd626"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z10",
+      "bytes": 3221225472,
+      "sha256": "3cfb39f3333ed7de9e797ae41e987c109886c3832c4d6c34503571a4c9d3ca18"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z11",
+      "bytes": 3221225472,
+      "sha256": "5bc28e9e37d87a3b5eefc57b705b2b15b7c80f1b4c4642fe992df481d08a076f"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z12",
+      "bytes": 3221225472,
+      "sha256": "46e9557b70bcf7b45fd0fc8985fb319ad2d53d60c5ed106c0640222f6ec94137"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z13",
+      "bytes": 3221225472,
+      "sha256": "799c4f8f69bb42a5c74791335658483c1900d65588aa49ac0ebf1490cf9bfd26"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z14",
+      "bytes": 3221225472,
+      "sha256": "40d6b69d0fd66c7f70d9af5a4ee7c49376d6e6b1ff43d111ebbc989cad60fdce"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z15",
+      "bytes": 3221225472,
+      "sha256": "d99c7c84eb4be1f16ddd83e64253d85123f1a0e88ea76652cd0de464c3b97810"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z16",
+      "bytes": 3221225472,
+      "sha256": "a876b745ddc9ab75414af77fa82b56bca0958a348bfa58e4b351093588dd55ad"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z17",
+      "bytes": 3221225472,
+      "sha256": "1627de15abbaea90060eac9170ced1f45de1f302e2d32bef4e7220442b8b9fae"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z18",
+      "bytes": 3221225472,
+      "sha256": "a594e0e4797adcdfe329fc26cc8c1e94d7efb8d01dc72ea37ee5764ef54a732e"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z19",
+      "bytes": 3221225472,
+      "sha256": "43074b7662b45848102765d291cce70fd19e2ebcc56ae80f1e900215ec9ca0fa"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z20",
+      "bytes": 3221225472,
+      "sha256": "0a92dd7b55d61923752afc49d2ac24c6fac3870f8a2d9826d86a05daae96e399"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z21",
+      "bytes": 3221225472,
+      "sha256": "db6e127e8f3d8819e2028f7e6e64139c0d5e411b1506b8f5304cb24b0a4437f3"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z22",
+      "bytes": 3221225472,
+      "sha256": "49cc156f9b6356e555405ab43561f477779780665a66812e6209ad5a5987478a"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z23",
+      "bytes": 3221225472,
+      "sha256": "5541cb410bef9ce6dfb5fa704fdb57827db386626fa6bad1fd254935a167410f"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z24",
+      "bytes": 3221225472,
+      "sha256": "5e91db0f4e1363fe0a3baebe679bc42824a0e82b8548275a78b23e26826d67ba"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z25",
+      "bytes": 3221225472,
+      "sha256": "c581f46290077bb3f583ffa198aaae27d848ff1ac10ee8800d54e6f64d82828f"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z26",
+      "bytes": 3221225472,
+      "sha256": "d2b9331df36ee1916c5f3f0ae211301834fc2533d639e3ed422875cee0481968"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z27",
+      "bytes": 3221225472,
+      "sha256": "0c5be4f38ff22d7808f0bfa3b44358f613c5228443cb6fd75d5a85758926353d"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z28",
+      "bytes": 3221225472,
+      "sha256": "7755fe950147d24d7736df0ffce4ca5c851c26e6b28aa77b2ba484bd423d6e6b"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z29",
+      "bytes": 3221225472,
+      "sha256": "91f5d73c33b86108a0ac29e2133accd881989f8b920f071df302dc0f5dfc59df"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z30",
+      "bytes": 3221225472,
+      "sha256": "a3e1106b6433a62bc463ef556f99ce143a143ab70a969972d0ae6514e9ab2df7"
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.zip",
+      "bytes": 1887358833,
+      "sha256": "de123080f47ecdd1e6f8e34b8f0cc4868a487354eaaf06fb7d3f9eb9773a5cfe"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z01",
+      "bytes": 3221225472,
+      "sha256": "322a85278bc089fe26ef98dcd452b63be175ee915866e18aea5526bbf224642a"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z02",
+      "bytes": 3221225472,
+      "sha256": "68e6fd06267810eacee9767ee7979910133371a48011a6946983ef3a3008478b"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z03",
+      "bytes": 3221225472,
+      "sha256": "9dbff3e8b24f0f7c5568834055bc373ee4b16caf82639145ae34e29b63f9e74b"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z04",
+      "bytes": 3221225472,
+      "sha256": "5249900b58202dac6f1d2bd2668d6757b14899c30d20a5920db9edc2ac5adcc4"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z05",
+      "bytes": 3221225472,
+      "sha256": "ac2333259ee1735e72fd4f40699d823cd40a1ec6153f3e966454229d658009b6"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z06",
+      "bytes": 3221225472,
+      "sha256": "c6b661e7da69f62075e8bdadf5229a5ea2746f701f5e8cda686666a14b00a28c"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z07",
+      "bytes": 3221225472,
+      "sha256": "01b997ce84dc05afb4350facaf07b0f55525be3fc993420569b23b9893588ea1"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z08",
+      "bytes": 3221225472,
+      "sha256": "fbf60c14df1e742b997abdd4ab0bdb7d983c0f836e0f15daa3d85454617a37b1"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z09",
+      "bytes": 3221225472,
+      "sha256": "294cb1df8c0231393d6fea0a836cb938e5be6f37bbb962a1d12e116ef6c37e5e"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z10",
+      "bytes": 3221225472,
+      "sha256": "adcab8f4a412b40d220f9137f8961e674ab8b93b8a79381668aa762ee6cb7347"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z11",
+      "bytes": 3221225472,
+      "sha256": "2808804f0779051ca4fa30f7ae0bbd87f9e6e5f21d51012cdaa57c0888bcab36"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z12",
+      "bytes": 3221225472,
+      "sha256": "39b3b9c670d45ea498b58993d95baadfedf1b3e7692d484963542ad946d78f38"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z13",
+      "bytes": 3221225472,
+      "sha256": "910dc0dd9969bc1fa67648c58a0ff9a6461473331bd22efca74b3856094f9c24"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z14",
+      "bytes": 3221225472,
+      "sha256": "f3b3f95959656a234c3714b9a427dc3fef0124570c8f800d67bd1d057dcf4a66"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z15",
+      "bytes": 3221225472,
+      "sha256": "f5a737bfbcbee2842652dcf3111c04d6a907c94a14897409a0bd20257e21171f"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z16",
+      "bytes": 3221225472,
+      "sha256": "34d7ea6a7cd614675439516abb86ff67f6ec4f9cf1d00a839c2103bb729eb558"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z17",
+      "bytes": 3221225472,
+      "sha256": "b936e92aaeb6baf503e62256153e3cb422a8f99e1cbc21d1b86572a8e82d2db9"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z18",
+      "bytes": 3221225472,
+      "sha256": "d25a212e8c2e3a211f66ad65ac3208cd5154249842bc0c664265c67e9a971123"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z19",
+      "bytes": 3221225472,
+      "sha256": "55f035cafec502d5f4d078fd2e980ca4a6937f8d948529a0e3925e92b7763601"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z20",
+      "bytes": 3221225472,
+      "sha256": "f808934a05de109df6cb171c13e1410d2539aa9062aa7530a58169149caf1af9"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z21",
+      "bytes": 3221225472,
+      "sha256": "13a97bbb140ee08a477834ff4696deafcf7a2d4f5f994962e172a46adc5802f1"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z22",
+      "bytes": 3221225472,
+      "sha256": "9fd7c611d538b835f7c80100a6a11fd5ed35d982fc2be71ad438ea84b504f032"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z23",
+      "bytes": 3221225472,
+      "sha256": "121952a0849e71fe2ff9e98b50604c80943322f3ed16b89da139bcdee5832316"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z24",
+      "bytes": 3221225472,
+      "sha256": "4f52554d3e1e61e1f6386089b62b86f9c24c8df41c937d206aa452c1415c693d"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z25",
+      "bytes": 3221225472,
+      "sha256": "c62268e962eb09fca319bbef5a255f80f71956db015d07b0b983d809977813ce"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z26",
+      "bytes": 3221225472,
+      "sha256": "6b3fad46ce9538e1ad6515b32c00a5855f407b04a595eaa4282be03011ecd1ef"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z27",
+      "bytes": 3221225472,
+      "sha256": "6d9c76cebba9b7873bf250260adab8dbc8a43ac52f71ca5afcac227d283de231"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z28",
+      "bytes": 3221225472,
+      "sha256": "666976c186942be936c50ea42ad1eba90fe57971dd75fff301ff7d7e4d217795"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z29",
+      "bytes": 3221225472,
+      "sha256": "03c0a3a72558209001021aff930d6e22bb67d8ff0a773d322e28da24d1713666"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z30",
+      "bytes": 3221225472,
+      "sha256": "fc618a5c93c4040baec5945f454b80f48abb9de884b41cc91e8b991de0ae60e4"
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.zip",
+      "bytes": 606085137,
+      "sha256": "7de6f000762be66e9f75670443ca865cd9127e956762b0cd5883063bbe51b892"
+    }
+  ]
+}

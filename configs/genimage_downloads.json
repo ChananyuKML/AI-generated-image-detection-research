@@ -1,0 +1,1667 @@
+{
+  "format_version": 1,
+  "official_folder": "https://drive.google.com/drive/folders/1jGt10bwTbhEZuGXLyvrCuxOI0cBqQ1FS",
+  "reference": "https://github.com/GenImage-Dataset/GenImage",
+  "captured_date": "2026-10-28",
+  "checksum_policy": "Sizes read from public Google Drive viewer metadata. Locally computed SHA-256 records are not publisher checksums.",
+  "duplicate_policy": "Download duplicate filename IDs separately, compare SHA-256, fail if bytes differ; preserve both.",
+  "files": [
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z01",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "1UsKnM31nMmTj8kOULDcL001RgvkytivX"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z02",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "16LJLkjwMogqudCtocdwiRu-68ADTS0n_"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z03",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "1MN5tCrwkvbD1YutPlxAZN3eySg65PyEg"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z04",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "1_rnhlIWoEpLbhvwr94_6gAx-VbIQicS6"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z05",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "18Mx1Std1ZegdUYiFEp2PW8EhD2tYmSRz"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z06",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "1BI9ra0fRIm8BHp9EH9P9w9Kk3E3PQsbw"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z07",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "1xPccO2q3fe2qiQtwH0tm-eC9_HGgLkdN"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z08",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "1hE5wOXxxBnaeCScjAV1SMXl-8xYuP8Rr"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z09",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "1abhNcONyuWKSOyL3BGyW94YlVUvmvog6"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z10",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "1Ne9yPLskS-Mo07EJM4trcvwGEr78Esbq"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z11",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "1vivg0FuaGo1eYRhSHcxloKXGfob1Shc2"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.z12",
+      "generator": "adm",
+      "bytes": 3221225472,
+      "ids": [
+        "1Wr30-38zcq3QCmo4zFd4ohX3Xi9KgXqh"
+      ]
+    },
+    {
+      "path": "ADM/imagenet_ai_0508_adm.zip",
+      "generator": "adm",
+      "bytes": 184678028,
+      "ids": [
+        "1kappILSn-kzBxja9GPw6JpGrzxFTl9rD"
+      ]
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z01",
+      "generator": "biggan",
+      "bytes": 3221225472,
+      "ids": [
+        "1dtuXpn2MDGRVSrzZwZvKWtQA6yO3U6u5"
+      ]
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z02",
+      "generator": "biggan",
+      "bytes": 3221225472,
+      "ids": [
+        "1-ECWWWXDEwDlBz4CBALSThZfyg0eGBm9"
+      ]
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z03",
+      "generator": "biggan",
+      "bytes": 3221225472,
+      "ids": [
+        "16PPUE9XcHndSprOcTPHVuDsZPyApyfF_"
+      ]
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z04",
+      "generator": "biggan",
+      "bytes": 3221225472,
+      "ids": [
+        "1pOyRWuy5U7aHhELEuu_0dzbxdq4ZxWYR"
+      ]
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z05",
+      "generator": "biggan",
+      "bytes": 3221225472,
+      "ids": [
+        "1mJDGWC4yYqViT_4V2v56Ww8G39G7LoF0"
+      ]
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z06",
+      "generator": "biggan",
+      "bytes": 3221225472,
+      "ids": [
+        "1d32eMbi9T2McdSPDfMZWk25NNrIvmK90"
+      ]
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.z07",
+      "generator": "biggan",
+      "bytes": 3221225472,
+      "ids": [
+        "1dAy2qpQmh7c7Ye6Awje-Wku7LaJUxFpS"
+      ]
+    },
+    {
+      "path": "BigGAN/imagenet_ai_0419_biggan.zip",
+      "generator": "biggan",
+      "bytes": 1687358196,
+      "ids": [
+        "1TRTjKdrJPEvLaP-O_31nrlnAsqRO6n8R"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z01",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1T-Ct8FO8c8wegw_c3WWsr1R-a2peFsVk"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z02",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1o_GSkPUumdO43ccMVQguZJXJfM8o8Zul"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z03",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1Jq3_cRF2L-6qu7IEBSTX1FRAi5UKFX7r"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z04",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "19_xCjljunYeOoXPkyj86K61bfguoDt0C"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z05",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1Ci515Afi9w_n2nJr4zHK7rz8m8cDAh_O"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z06",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1I_R2KzktE2-SCd--Rpxe5o3FDTV682Ba"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z07",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1UmWYs4OKhJ9xX4s2EEDhGGevwl7tnDhp"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z08",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1kD5PJasmzJ_pXBeF-2ZxvMTR6tL1hFZ7"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z09",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "10_drWBz9ZREwIQku2g7eCdMoX3N1FLcM"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z10",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1JV0dKJmpD9iXfF53vwpotaaVtBpjV8HH"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z11",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "13KqxLbeJtyQ1Lu-Ey4vFBDnvS4HTYawd"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z12",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1vjz2VdROW0LnmN-0CkQtq6lQHGF9ja0R"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z13",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1IaMEEb7fKiTUcDhDJj30h9HVDbQO3eCF"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z14",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1XReothTuIWQABLoVBP1xWRS0ri3FF7RV"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z15",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "19pFBoMFLtute8u9npf879xSn5GQBJ0oV"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z16",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1q3yLUBPFE6YZJ03yojLuRys9tAZMhZGc"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z17",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1kRSFPk7RRIzTOcmUXwybNBUCMtDNVv4f"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z18",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1CBtiCid4V-IE3-jy24fQwWuoiQTPSojl"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z19",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1w6fAKWHxt158JW58vbFKhkH3HLCybotu"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z20",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1sMjka-vPUhtUZxndu0IKo8Rj4gwT40tz"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z21",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1KzxCbSWwoVXU-1BLcKJ_wpfLjSis7Big"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z22",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "13t_Qgyjy822bt5fkpVNlmgS4Wrm1DolQ"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z23",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1snc8-VZrMJBhUTvRvB4odTRtje8ib2za"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z24",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1sMXG0kwRIjv2tmMzAjCcNgTDftctOXpn"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z25",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1Zu796-1t1qzdcZ3sk2Cdl2Un0WizTq9N"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z26",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1UXiqPcBtxnJ0qz7TsCWsqhFxUdzN9qmC"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z27",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "14g4fW5u4FTNg0QJyR6TMpAII_x8zB2B-"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z28",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1TQRTFJ9W9vQodGroTOO8jdjG-KCdiHmY"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z29",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1qxcWKNdMgwwGmwGj0qtgtBvNOV8VGCnk"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z30",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "16VaK0e9bPbMBiY59iX14KDRtummoSlPl"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z31",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1m3uoTUogypcr9aGc120MFxdtXfwgwJcJ"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z32",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1SbWMBZKKNRU31CDECfEPnCzQSuR8dPMl"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z33",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1lL1MHZoM8yBer2zI389FvEhM3WVHPv7h"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z34",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1_Pggy6tyAA0ZfZEBfXUhTP1rVwncpA11"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z35",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1p6bVOkBqFdSRwxKU7azGVo4BO9QYr0kD"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z36",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1c1H715wNk5ER7H02gruUOt6AL8sf91zi"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z37",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1HgITWPo4WAQ8k_vK_70S4ZGmf4_c7ZaN"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z38",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1ciz7KJ3jdGGbgrYu5EykcK7zkUgKou5A"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z39",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1emQJaP-9Fo0or6X46Yky3Vel1GDvpAxZ"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z40",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1-KeYmtYtRYmBkz9YsU2WCqqKktegWtJ1"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z41",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1JPgLqFLeGivIZD5FSBBwtTRyByo1csIf"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z42",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1AhwYY3JSeeZppxjnroJmTWF2enfCHZ1a"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z43",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1pMjV_wylMlizpca2-5H6ZdUDQCTsrIgI"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z44",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1odMqM4WRl4vEgBgjjFIqxa1zPtZEqF1G"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z45",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1ihV49jxtbh_6f8XCIQ4Un5LNIBeuI1Hm"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z46",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1Vm5URG7oodcYVklGn8Nm7kbuJMeSzNxl"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z47",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1zDzZwzX5Qs4qLi_jGdF9Mx48pKrmbGL3"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z48",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1gdwNZB0NR3uuNbR9OuytAiFJMc0mRnv2"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z49",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "154xscOrLsCkbQ4tzFyY8s6bhNqEid2D3"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z50",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1dlckgE08uU6ID2pJM-LvF4kIacJZ-q0V"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z51",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1YEVlrXlFLsc717Gy_OdSlFF3RiUQf97r"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z52",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1F8N5ErMuWtHc4UsQrXFaQ5jvEABI9g7K"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z53",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1_nJyBlblQ2RiTtmXk4wC0pBvwIXIIhDk"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z54",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1KdS6RMRRaBHQYA98ST5wzyguRbtfTDD7"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z55",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1E0zyqd1FmAAe2w-CjDetqKBsLgDvew9v"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z56",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1rInzewHynoGp25x8T6WrmVYTebKct85c"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z57",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1pSeeb9mON3A5aDBUuZa_JeEE59sliNOY"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z58",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1XWQnC8L7BrjYFYmsCFa1MrGesvwyorsv"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z59",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "12sAdnodd7OjgsHAGmNd2-KCJubbxf6bp"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z60",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "131X_fvUwPBUDUp-wkDE9tE6Pqa-3cINY"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z61",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1xQy7XCG8W3vXh0rgkxkFN2DyE1R10VsR"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z62",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1mqYFXXOPBDu1KsARUS96kknpO7YSjMG6"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z63",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1vQNJY2et8rhXxXlGGTyqhxxASsjXGcij"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z64",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1ctoUCyTADMFbWGGCRvo6rzxsYn3LEvTD"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z65",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1vbHHHrOGw6ZmQbi5ly61NnyUk4rAx-4C"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z66",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1TJxvBQAc4-C-xKn_25VltdXsLmyMKnGH"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z67",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1uI-pNbX1hM9snzFnsoQQgDOoMBm-BWWh"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z68",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1kYauqFOm6SfOukU5P-6Xx39JGY7d1SxQ"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z69",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1fJyhS-XY4UGd5YQ18mVLmIsmUTaZeEgD"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.z70",
+      "generator": "midjourney",
+      "bytes": 3221225472,
+      "ids": [
+        "1vmiMJA__1IzSSMrhk4uvqDNWgxrv1PuS"
+      ]
+    },
+    {
+      "path": "Midjourney/imagenet_midjourney.zip",
+      "generator": "midjourney",
+      "bytes": 1983433670,
+      "ids": [
+        "1sVDVgZoxSzgllYWC1Gzq3zjBV6fk7qN6"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z01",
+      "generator": "vqdm",
+      "bytes": 3221225472,
+      "ids": [
+        "12hRuzHQ-eAbrJeGS01n1iYNHYYl0A0LV"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z02",
+      "generator": "vqdm",
+      "bytes": 3221225472,
+      "ids": [
+        "1y_fjkvzTWHXAbzIurRmdQ_rU54Dj0B45"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z03",
+      "generator": "vqdm",
+      "bytes": 3221225472,
+      "ids": [
+        "15pVNrnfoFebBjM4utOW1UuzyKVBsUxjC"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z04",
+      "generator": "vqdm",
+      "bytes": 3221225472,
+      "ids": [
+        "1xKpZOC9Rbe0EQMH6HxhmqfZeI0y13Opq"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z05",
+      "generator": "vqdm",
+      "bytes": 3221225472,
+      "ids": [
+        "1Yjsi-auGqvOZV3r6hfcrgoHbWVLag6jN"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z06",
+      "generator": "vqdm",
+      "bytes": 3221225472,
+      "ids": [
+        "1tm0ierEBLH18ZqviTy8Ds86Fu1lTrIrr"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z07",
+      "generator": "vqdm",
+      "bytes": 3221225472,
+      "ids": [
+        "1ZT_l-jRj-1GyXnuaBxGCZKzjk0TCZDqV"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z08",
+      "generator": "vqdm",
+      "bytes": 3221225472,
+      "ids": [
+        "1Y0B6THLU6ZZPcXx_Jc62eZ2h9-9qw96h"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z09",
+      "generator": "vqdm",
+      "bytes": 3221225472,
+      "ids": [
+        "18WPZg86aw7fKdA7LU-lCztiDrggAeF4s"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z10",
+      "generator": "vqdm",
+      "bytes": 3221225472,
+      "ids": [
+        "19R3BOE_XpthkH3ia8CXE2SVsJZHjfMA_"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.z11",
+      "generator": "vqdm",
+      "bytes": 3221225472,
+      "ids": [
+        "1WeH5_1ysaqmDvgwoX1yUmTSLj_BkTZg-"
+      ]
+    },
+    {
+      "path": "VQDM/imagenet_ai_0419_vqdm.zip",
+      "generator": "vqdm",
+      "bytes": 2771366344,
+      "ids": [
+        "1T4rGc6S3cb5m4PrmJKkvJZnVd92wLYWh"
+      ]
+    },
+    {
+      "path": "glide/imagenet_glide.z01",
+      "generator": "glide",
+      "bytes": 3221225472,
+      "ids": [
+        "1NvEr9FSMhc28qxt2RsfSHyRoVm06YbO6"
+      ]
+    },
+    {
+      "path": "glide/imagenet_glide.z02",
+      "generator": "glide",
+      "bytes": 3221225472,
+      "ids": [
+        "15BwJz-Iq5ealHgtiFau10n28WhRGvGGR"
+      ]
+    },
+    {
+      "path": "glide/imagenet_glide.z03",
+      "generator": "glide",
+      "bytes": 3221225472,
+      "ids": [
+        "1O0uEfzUlYcojOVqTpjF7AI3P9mFU2ooE"
+      ]
+    },
+    {
+      "path": "glide/imagenet_glide.z04",
+      "generator": "glide",
+      "bytes": 3221225472,
+      "ids": [
+        "1SzGYBOYsWX3SwwJt51oZIDIzt3JBzzVA"
+      ]
+    },
+    {
+      "path": "glide/imagenet_glide.z05",
+      "generator": "glide",
+      "bytes": 3221225472,
+      "ids": [
+        "1Du_7BEFuXzKGqI-bSvi3FWXWlFmUf5K3"
+      ]
+    },
+    {
+      "path": "glide/imagenet_glide.z06",
+      "generator": "glide",
+      "bytes": 3221225472,
+      "ids": [
+        "1TVTNRKtS3Tl1ovmej5u9Flg7yqHgCadQ"
+      ]
+    },
+    {
+      "path": "glide/imagenet_glide.z07",
+      "generator": "glide",
+      "bytes": 3221225472,
+      "ids": [
+        "1LssUx4DjLOHrv8hD8MCY4u1ADfHrOXHc"
+      ]
+    },
+    {
+      "path": "glide/imagenet_glide.z08",
+      "generator": "glide",
+      "bytes": 3221225472,
+      "ids": [
+        "1ws3dqHTCAwteaf950YWMGl_MYKr0kTp3"
+      ]
+    },
+    {
+      "path": "glide/imagenet_glide.z09",
+      "generator": "glide",
+      "bytes": 3221225472,
+      "ids": [
+        "1iUtbABfaGZPGxgJDmFFqgsYqogUFFtma"
+      ]
+    },
+    {
+      "path": "glide/imagenet_glide.z10",
+      "generator": "glide",
+      "bytes": 3221225472,
+      "ids": [
+        "1IAo3GYGFR3vbExTjCZxwQ9RPdYhoNncA"
+      ]
+    },
+    {
+      "path": "glide/imagenet_glide.zip",
+      "generator": "glide",
+      "bytes": 51607857,
+      "ids": [
+        "1npimXkkd74IkzkBChduvlkQWQTUhP8CA"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z01",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1Y7FZMVzopwXaPIeMwpBYNiI7IWxENgFU"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z02",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1Z-vL01F3QkTilJvuYN_jqOTIQ8QvmAGy"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z03",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1hS777nqeBbkfKWs-7axGNomIcnRDTCsE"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z04",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "17E-BPsGiVLfsAKwkyHG2pPxLuUBOjTZ4"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z05",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1MWJb1adBFgsGdbm96PcvV0Idf_t-UUoF"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z06",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1qmjicansM2-2hECrmBrrlgoC8azzl-lL"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z07",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1GB6jvADz8SYKi6lq5RJGGpFnRuOmV1GP"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z08",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "15SM5PwbYyZHoALi2uhvSbQkBhbmNKvhX"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z09",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "15E4Scf99aXBP7n56uJ0NzkUO4acxGBT_"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z10",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1HZLd0sSrzgNM0j3VR1EUdrzrzipd6WN6"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z11",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1IMk7wMq-Fcb4pw9RhAQ3DgyWAqVWTzZa"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z12",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "10Ibi1VVVbMQG7WQX6ZTlpJRtsOyWfAI5"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z13",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1qNSC7OT22c2n_8sOI1pfO_9A9-c4vnGN"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z14",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1te2oARoJy-UQp-Mgf26eLda16S6Ir6ef"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z15",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1PeNQJBYLGbmOprFlTjynrSZ0r1-34Poo"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z16",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1T1z3dcEQ0q-WWhwq24ulAjVy3G_O8cZ7"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z17",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1hSoaXOK-2mQK3lZ_QcSAGP8YPl12wgGS"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z18",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1lHVRAS5453b2B3KErG0YXSF2Z3BoXkLn"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z19",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1cju9hbC5IUMp8lsRsqS5lsL033PwabY9"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z20",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1ysCGAz0XlPjjQGGjR2zWEVfrP0XIkiWp"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z21",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1PianQ6okcy3VmYfKcnVriqpTmoxO2Z46"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z22",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1NlQJhIl1Qpl8Cw2LwZGqVC0yQzSyJM-d"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z23",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1DqvN2kkZA5j4PDRSRATuBUQsYluMnYbW"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z24",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1RFYGzREYM8qfX-afUSOlYZKW81MhHKur"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z25",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "118SonC2aFvNnTbka335QzzTjQ-Nybwd-"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z26",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1luJplS8nutHIs_3wDU6cDtySbntFHRgj"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z27",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1AdD5yNX_Z5v70oqzAgp9gHxhZ0OKXgM0"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z28",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1v6DK-8YNG7w5qUafk1JT1-B17vvThh37"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.z29",
+      "generator": "sdv4",
+      "bytes": 3221225472,
+      "ids": [
+        "1b6_70ptyHRd8wEiUc9lq_N4OLuyf_bTK"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_4/imagenet_ai_0419_sdv4.zip",
+      "generator": "sdv4",
+      "bytes": 2997859082,
+      "ids": [
+        "1gPjgbo5ZYyOW_PBhOeQB47CPLL6nqEjs"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z01",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1ndGh-3D8kaVFktogs_jhPkvXac90vzTh"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z02",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1PAMShns8pmgdDvfMWcOSUwLlycsIIjBx"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z03",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1L0GCM6Z5w59AAxCZ4HEhwqupzL2FbkOx"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z04",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1RKfdsJE_psjqccPfqzcnHYX9QCjpSdRP"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z05",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1C7GgeEY8a3fYnAepQiKrZlPK6beo7C4L"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z06",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1VKU3G-iogKHOC_WKNF50q0JHHRxFnPgs"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z07",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1RBsppKpJvG1nFtDTvX5XRTTC-m9_nAEC"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z08",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1wuxr0vwip9oNJPQpvjcM7xf8Ucc8EPIn"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z09",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1dQ4acDwkDCV7c77sKdjhllVcNxb1v0kr"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z10",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1Go2IKo-Ov5G90YSugSWyGk9B0xbotLEC"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z11",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1imOdemMa3_uIwLVXcrZhZtAnfOvK9dos"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z12",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1cw5CIdyEBaPOMzRZJ1M7or-Svcf_4H6B"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z13",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "14ycTQh2hsPFYD3wbFCF-MFZVfpju7JNo"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z14",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "13k4XPf790f58VcxHslr-8-7Fc52Qnfez"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z15",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1NVh7_-_98JxEBb1YQ09_MjtkjZK_QtUg"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z16",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1N6Z7p-zw357pJ_ttdeq7d0kP583DneTP"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z17",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1N4KqSFq52xY8vMHO-ORsJwQ1V_1gM5sE"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z18",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1TO78Dzetf5tWca-5gqVFdS5i6-FvH3du"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z19",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1XfX0XbEMANeI5nOtHP-uDncxjZQUHTDy"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z20",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1RIcrlEWGVKYfvnL9ic8WuOu40e29IZxD"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z21",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "10JkLaB6c6hI5MYPLO8W8QiNuTTZDs0K5"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z22",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "10I0YpTZUH_jpOkueqPLma7VvyDW6xtMc"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z23",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "10GpQt93_vVI-9lQFpBqRW2Yj7OBW19_y"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z24",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1097eSe5HjuU0TjQ3R_qH6JPnz1pQmnps"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z25",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "106k_cX01UsnjfH3Y867xh5y3sGTysdyM"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z26",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1xmCvNcrH55H0aXoYVY6fVB9jgGQV-lup",
+        "1thjlQZsGUwVxr8ZvZATZT2x33x4CeeMX"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z27",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1i4cwgOgZSDM9yutyEjZxgn9Uwrr14Z13"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z28",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1tZHiDccnGJRNvFPelah9o-zsAS4sWi9E"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z29",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1UclAz1ydKegS5_5S4xSvlP78qR_7Pvu4"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.z30",
+      "generator": "sdv5",
+      "bytes": 3221225472,
+      "ids": [
+        "1ij9QGjkvknlSV8MQEvhs1I9d60i6WvEZ"
+      ]
+    },
+    {
+      "path": "stable_diffusion_v_1_5/imagenet_ai_0424_sdv5.zip",
+      "generator": "sdv5",
+      "bytes": 1887358833,
+      "ids": [
+        "16fpAiTn9cKJxhdAZYUMQWq8IiiIHEy_T"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z01",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1kJWV46KtLv-3ffInvH3C41JXOCkuuxsx"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z02",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1HafVDDUMjMNnPl7AQo_fnIok_P_EeOiM"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z03",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1cZXvQFe7y12hSv3tkKKIQdZb7B1NcQed"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z04",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1F3M68lHsIcq4NrTc3ZaF2ewdZBTIdeDi"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z05",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1H40bbPh4a5NMvvkAeuWXzDlJkujgjEEg"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z06",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1SGnhor2NLsQagZ4yb6CXx4HHjyp01BKd"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z07",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1bTgXOJCkdq9deylfFj11BBmQnHAANODQ"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z08",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1UhxKqGV04OpOgnL6zRKoOtNK0vgmn3SR"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z09",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1cEWWFHPZRRMe1ZAooKITmXUUOnrAu7bp"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z10",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1dR1g5IeHS6JFJo4ilzp3TvumThhf2XMO"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z11",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1A8PrAYREIdKsiBPsP489D1Nh8hPh8yvs"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z12",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1e-1AeoPqcdNbdb2sZxNQqTgLsR9r3utq"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z13",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1OluG52W7j3EA01_GljMTXLhdwFOeiLNR"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z14",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1pDGF0anzsHN0CqfEjBftatWg80UgXU0k"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z15",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1aPNP8rwYsIbjoSGy7LsXi4M2BjRut4VS"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z16",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1nGveKRFP8-4lZp6wXjBL9sPPZqd4oDAt"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z17",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1c01b7DlHGU48SqXG6I7piTIulu1g22Ic"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z18",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1vItmiNv6uZT4-I2UFXjw41_3bTwVb9ys"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z19",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1zdCnRtmDCU_eqcmhDuZUBnFkO5mpMk1F"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z20",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1J1sEF6ZqyRm2gjTZEM2lLjZkf90aD8wj"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z21",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1flrr1KAiwqJht1D6peurBzmOJV2aDHJa"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z22",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1VB3urdLIA4g_9fGYGtymPOmD9-Qrgj_E"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z23",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1qlUDaYVhZNZiqt93P4exDh7HJx_4lI97"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z24",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1iEIwIRKyhmR280bxK13gKUrRmS1vwtoU"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z25",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1Dqjcjdh5aLJOiNcU2SCj7ltaJPt8eUkl"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z26",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1IxiYuiFZv1CjRbX2EfA5Ue2RzW-X_k8S"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z27",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1Ek-iXLHgF-FU6HEHle-yi__A4uFixB86"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z28",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1YEOnUexP1WDE5v3S1pfQxYe96ymniHSA"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z29",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1ATyPwaj8LchogG2YH46rDPMzKMOR8DpM"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.z30",
+      "generator": "wukong",
+      "bytes": 3221225472,
+      "ids": [
+        "1g52sSil8DV7ajxa81ztW6BxgmKlE3jrR"
+      ]
+    },
+    {
+      "path": "wukong/imagenet_ai_0424_wukong.zip",
+      "generator": "wukong",
+      "bytes": 606085137,
+      "ids": [
+        "1sdxRyLz13qnGaL27O9J7-JuIHZEO7W2_"
+      ]
+    }
+  ]
+}

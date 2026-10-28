@@ -89,6 +89,31 @@ required cells exist; partial observed means are explicitly separate.
 The live dashboard shows the generator-specific queue and selectable 7×7 matrices.
 During testing it shows which target is being evaluated and its batch progress.
 
+### Presentation and paper tables
+
+The queue also writes `presentation/genimage_accuracy_tables.md` and `.tex` after
+each completed source evaluation. The summary follows **Table III in the owner's
+research paper**: model rows, test-generator columns, and the equal-cell overall
+average. Each test-generator column averages its seven training sources. Accuracy
+is displayed as percentages with two decimals. The existing CSV exports retain
+fractions in [0, 1]. These files also include all five individual 7×7 matrices,
+source-row means, seven-cell diagonal and 42-cell off-diagonal means. A mean is
+Pending until all its required cells are measured; missing scores are never zero.
+
+Regenerate the tables from recorded results, without running inference:
+
+```powershell
+.\.venv\Scripts\python.exe tools/export_genimage_tables.py --batch-dir runs/full_comparison_20261013
+```
+
+Add `--watch` to keep updating an already-running batch whose manager predates
+this exporter. It stops after all planned Tiny matrices are complete. This reads
+saved results and uses no GPU. On Linux use `.venv/bin/python`. The `.tex` output
+contains table fragments to insert into an existing paper, rather than a standalone
+document. The paper's Table II used an SD1.4-trained detector; this subset has no
+SD1.4, so its individual source rows are labelled by their actual training source.
+Published full-dataset baseline numbers are not inserted into this subset table.
+
 ## Updating an already-running older queue
 
 `tools/switch_genimage_protocol.py` is a Windows coordinator for the existing

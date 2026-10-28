@@ -8,9 +8,33 @@ experiment replaces fixed gradient filters with trainable filters initialized fr
 the existing FFD implementation. The owner's current focus is binary classification;
 prototype (`_proto`) experiments are deferred.
 
-The current training scope is the full prepared `progan`, `tiny_genimage`, and
-`cifake` datasets with all five supported models. Do not schedule POC variants for
-the active comparison. Synthetic data remains appropriate for code-only tests.
+**28 October 2026:** the owner requested a switch to full official GenImage and
+clarified that the immediate need is a script to download its many archives.
+Use `tools/download_genimage.py`, the Windows `download_genimage.ps1` wrapper and
+`docs/FULL_GENIMAGE.md`. The public catalog has 208 file IDs / 207 unique archive
+paths (611.33 GiB including a duplicate-ID comparison). Neither local C: nor D:
+has sufficient free space for all archives as of this snapshot; no bulk download
+or full-data training has started. Full-data preparation and eight-generator
+training integration are pending. Do not route full archives through the Tiny
+seven-generator protocol, relabel Tiny checkpoints as full results, or reuse
+their run directories. Preserve the completed Tiny experiments below.
+Live checks on 28 October hit official Drive download quotas. Explicit
+`--source huggingface` / PowerShell `-Source huggingface` selects a pinned
+community mirror with all 207 official paths and matching byte sizes (608.33 GiB).
+Its published SHA-256 values are checked; they are mirror hashes, not official
+publisher hashes. Keep provider output directories separate. A real 49 MiB volume
+download, intentional interruption, resume and checksum verification succeeded.
+Use `--files` / `-Files` for bounded individual archive checks; this does not
+constitute a full generator/dataset download. See `docs/FULL_GENIMAGE.md`.
+
+The current training scope is the full prepared `progan` and `tiny_genimage`
+datasets with all five supported models. The owner deferred **CIFAKE on 14 October
+2026** because of training duration; keep its prepared files and omit its five
+jobs until the owner requests it again. The active batch is
+`runs/full_comparison_20261013`, now 40 stages. Use explicit
+`--datasets progan tiny_genimage` when continuing this scope; the runner's general
+default still includes CIFAKE. Do not schedule POC variants for the active
+comparison. Synthetic data remains appropriate for code-only tests.
 Tiny GenImage now uses the approved **full 7×7 cross-generator matrix for each model**,
 with original supplied val images reserved entirely for final test and selection
 validation taken from original train. Read `docs/GENIMAGE_TESTING.md` for protocol

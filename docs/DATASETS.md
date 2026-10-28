@@ -1,5 +1,10 @@
 # Datasets and pilot protocols
 
+For the **28 October 2026 switch to full GenImage**, use
+[FULL_GENIMAGE](FULL_GENIMAGE.md). It documents the official eight-generator
+multipart download, resumable script, measured compressed sizes and disk limits.
+The variants below describe the earlier prepared datasets and remain preserved.
+
 Download and prepare any subset of the three sources:
 
 ```sh
